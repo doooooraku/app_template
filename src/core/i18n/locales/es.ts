@@ -1,136 +1,27 @@
-import baseEn from './en';
+import type { TranslationKey } from './en';
 
-const dict = {
-  ...baseEn,
-  // --- Home / Header ---
-  daysStreak: 'DÍAS SEGUIDOS',
-  yourChain: 'TU CADENA',
-  allDoneDays: 'DÍAS COMPLETOS',
-
-  // --- Settings (General) ---
-  settings: 'Ajustes',
-  hapticOff: 'Vibración desactivada',
-  language: 'Idioma',
-  sound: 'Sonido',
-  haptics: 'Respuesta háptica',
-  theme: 'Tema',
-
-  // --- Purchase / Restore ---
-  restore: 'Restaurar compras',
-  purchaseSuccess: 'El plan Pro está activo.',
-  purchaseFailed: 'Error en la compra. Inténtalo más tarde.',
-  restoreSuccess: 'Historial de compras restaurado.',
-  restoreNotFound: 'No se encontraron compras para restaurar.',
-  restoreFailed: 'Error al restaurar las compras.',
-
-  // --- Settings (Sound & Info) ---
-  version: 'Versión de la app',
-  tapSound: 'Sonido al tocar',
-  click: 'Clic',
-  pop: 'Pop',
-  soundSwitchLabel: 'Efectos de sonido',
-
-  // --- Pro Screen (Paywall) ---
-  proTitle: 'Desbloquea tu cadena.',
-  proHeaderTitle: 'DotChain Pro',
-  proSubtitle: 'Crea hábitos ilimitados y haz que tus puntos sean imparables.',
-  proPlanFreeTitle: 'Gratis',
-  proPlanMonthlyTitle: 'Mensual',
-  proPlanYearlyTitle: 'Anual',
-  proPlanYearlyBadge: 'Mejor opción',
-  proBadgeShort: 'PRO',
-  priceFree: '0 € / para siempre',
-  proOnlyTitle: 'Función Pro',
-  proOnlyTheme: 'Pásate a Pro para usar este tema.',
-  openPro: 'Ver plan Pro',
+const es: Partial<Record<TranslationKey, string>> = {
+  // --- Common UI ---
+  ok: 'OK',
   cancel: 'Cancelar',
-
-  // --- Settings (Appearance) ---
-  flowEffectTitle: 'Animación de flujo eléctrico',
-  flowEffectHelp:
-    'Haz que un flujo de neón recorra la línea de tu cadena. Apágalo si prefieres una vista más tranquila.',
-
-  // --- Heatmap Range (Settings) ---
-  heatmapRangeTitle: 'Periodo de visualización',
-  heatmapRangeHelp: 'Elige cuántos días de tu cadena mostrar en el mapa de calor.',
-  heatmapRange7: '1 semana',
-  heatmapRange30: '1 mes',
-  heatmapRange60: '2 meses',
-  heatmapRange90: '3 meses',
-  heatmapRange180: '6 meses',
-  heatmapRange365: '1 año',
-  heatmapSummaryPrefix: 'Últimos ',
-  heatmapSummarySuffix: ' días',
-  heatmapAgoSuffix: ' días atrás',
-  heatmapToday: 'Hoy',
-
-  // --- Themes ---
-  themeDesc: 'Cambia la apariencia de la aplicación.',
-  themeDarkLabel: 'Oscuro',
-  themeNeonPinkLabel: 'Neón Rosa',
-  themeCyberBlueLabel: 'Ciber Azul',
-  freeThemeNote: 'Gratis: Solo Oscuro / Pro desbloquea Neón Rosa y Ciber Azul',
-  proThemeNote: 'Los temas Pro estarán disponibles pronto.',
-
-  // --- Habit Management ---
-  newHabitTitle: 'Nuevo hábito',
-  editHabitTitle: 'Editar hábito',
-  habitNameLabel: 'Nombre',
-  habitNamePlaceholder: 'ej: Leer un libro, Beber agua',
-  habitIconLabel: 'Icono',
-  deleteHabit: 'Eliminar este hábito',
-  deleteConfirmationTitle: '¿Eliminar?',
-  deleteConfirmationMessage: 'Esta acción no se puede deshacer. Se perderá todo el historial.',
   save: 'Guardar',
+  delete: 'Eliminar',
   create: 'Crear',
+  close: 'Cerrar',
+  done: 'Listo',
+  loading: 'Cargando...',
+  retry: 'Reintentar',
+  error: 'Error',
 
-  // --- Icon Categories & Labels ---
-  iconCatBasic: 'Básico',
-  iconCatHealth: 'Salud',
-  iconCatLearning: 'Aprendizaje',
+  // --- Settings ---
+  settings: 'Ajustes',
+  language: 'Idioma',
+  theme: 'Tema',
+  version: 'Versión de la app',
+  haptics: 'Respuesta háptica',
+  sound: 'Sonido',
 
-  iconLabelStreak: 'Racha',
-  iconLabelTask: 'Tarea',
-  iconLabelShine: 'Brillo',
-  iconLabelClean: 'Limpieza',
-  iconLabelLaundry: 'Colada',
-  iconLabelWater: 'Agua',
-  iconLabelWalk: 'Paseo',
-  iconLabelSleep: 'Sueño',
-  iconLabelWorkout: 'Entreno',
-  iconLabelBarbell: 'Pesas',
-  iconLabelRead: 'Lectura',
-  iconLabelArt: 'Arte',
-  iconLabelMedia: 'Medios',
-  iconLabelStudy: 'Estudio',
-  iconLabelLanguage: 'Idiomas',
-
-  // --- Misc / Errors ---
-  habitButtonSuffix: ' botón de hábito',
-  errorLoadFailed: 'Error al cargar los datos.',
-  errorTitleRequired: 'El título es obligatorio.',
-  errorTitleTooLong: 'El título debe tener 20 caracteres o menos.',
-  errorSaveFailed: 'Error al guardar.',
-  errorDeleteFailed: 'Error al eliminar.',
-  errorToggleFailed: 'Error al actualizar.',
-  habitLimitTitle: 'Límite del plan gratuito',
-  habitLimitBody: 'En el plan gratuito puedes crear hasta 3 hábitos.',
-
-  // --- Settings description ---
-  hapticsDescription: 'Respuesta háptica (vibración)',
-
-  // --- Reminder ---
-  reminderSectionTitle: 'Recordatorios',
-  reminderToggleLabel: 'Usar recordatorio',
-  reminderTimeLabel: 'Hora de notificación',
-  reminderNotificationBody: '¡Es hora de construir tu cadena!',
-
-  // --- Review (7-day streak) ---
-  streak7Title: '¡Racha de 7 días!',
-  streak7Message: 'Has mantenido tu cadena una semana completa. ¡Buen trabajo!',
-  ok: 'Genial',
-
-  // --- Language labels ---
+  // --- Language selector ---
   languageChange: 'Cambiar idioma',
   currentLanguage: 'Actual',
   languageNameEn: 'Inglés',
@@ -141,8 +32,8 @@ const dict = {
   languageNameIt: 'Italiano',
   languageNamePt: 'Portugués',
   languageNameRu: 'Ruso',
-  languageNameZhHans: 'Chino (简体)',
-  languageNameZhHant: 'Chino (繁體)',
+  languageNameZhHans: 'Chino (simplificado)',
+  languageNameZhHant: 'Chino (tradicional)',
   languageNameKo: 'Coreano',
   languageNameHi: 'Hindi',
   languageNameId: 'Indonesio',
@@ -152,26 +43,39 @@ const dict = {
   languageNameNl: 'Holandés',
   languageNameSv: 'Sueco',
 
-  // --- Tutorial ---
-  tutorialWelcomeBody:
-    'Welcome!\nDotChain helps you build a chain of habits.\nTap the + button at the bottom right to create your first habit.',
-  tutorialPressFabBody:
-    'Tap the + button at the bottom right to create your first habit.',
-  tutorialPressHabitBody:
-    'Now tap the habit you just created.\nA tap marks today as done.',
-  tutorialExplainChainBody:
-    'That tap increased your DAYS STREAK and lit up YOUR CHAIN.\nKeep going each day to grow your chain.',
-  tutorialEditIconBody: 'First, choose an icon that matches your habit.',
-  tutorialEditNameBody:
-    'Next, enter a habit name.\nFor example: Drink water or Read a book.',
-  tutorialEditSubmitBody:
-    'All set!\nTap Create below to add it to your Home screen.',
-  tutorialGotIt: 'Got it',
-  tutorialNext: 'Siguiente',
-  tutorialWelcome: 'Bienvenido a DotChain',
-  tutorialDesc1: 'Conecta tus hábitos diarios y construye tu propia cadena.',
-  tutorialDesc2: 'No rompas la cadena para que el hábito perdure.',
-  tutorialStart: '¡Empezar!',
+  // --- Purchase / Restore ---
+  restore: 'Restaurar compras',
+  purchaseSuccess: 'El plan Pro está activo.',
+  purchaseFailed: 'Error en la compra. Inténtalo más tarde.',
+  restoreSuccess: 'Historial de compras restaurado.',
+  restoreNotFound: 'No se encontraron compras para restaurar.',
+  restoreFailed: 'Error al restaurar las compras.',
+  restoreDesc: 'Restaurar compras realizadas con esta cuenta.',
+
+  // --- Pro / Paywall ---
+  proTitle: 'Actualizar a Pro',
+  proPlanFreeTitle: 'Gratis',
+  proPlanMonthlyTitle: 'Mensual',
+  proPlanYearlyTitle: 'Anual',
+  proPlanYearlyBadge: 'Mejor opción',
+  proBadgeShort: 'PRO',
+  priceFree: '0 € / para siempre',
+  priceLoading: 'Cargando...',
+  priceUnavailable: 'No disponible',
+  proCtaYearly: 'Iniciar plan anual',
+  proCtaMonthly: 'Iniciar plan mensual',
+  proCtaStayFree: 'Continuar gratis',
+  proFinePrint: 'Las suscripciones se renuevan automáticamente. Puedes cancelar en cualquier momento desde los ajustes de tu cuenta.',
+
+  // --- Legal ---
+  legalSectionTitle: 'Legal',
+  legalPrivacyPolicyLabel: 'Política de privacidad',
+  legalTermsOfUseLabel: 'Términos de uso (EULA)',
+
+  // --- Errors ---
+  errorLoadFailed: 'Error al cargar los datos.',
+  errorSaveFailed: 'Error al guardar.',
+  errorDeleteFailed: 'Error al eliminar.',
 };
 
-export default dict;
+export default es;

@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# App Factory Template
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Expo SDK 54 + React Native 0.81.5 template with batteries included.
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Quick Start
 
 ```bash
-npm run reset-project
+# 1. Copy .env.example and fill in your app identity
+cp .env.example .env
+
+# 2. Install dependencies
+pnpm install
+
+# 3. Start development
+pnpm dev
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## What's Included
 
-## Learn more
+| Category | Details |
+|----------|---------|
+| **Framework** | Expo 54, React Native 0.81.5, New Architecture |
+| **UI** | Tamagui, React Navigation |
+| **State** | Zustand, React Query |
+| **i18n** | 18 languages (expo-localization + custom system) |
+| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads) |
+| **CI/CD** | GitHub Actions (lint, type-check, test, iOS TestFlight) |
+| **EAS** | Build profiles (dev/preview/production), Submit (Android), Update (OTA) |
+| **Docs** | Diataxis structure, ADR template, PR template |
+| **Quality** | ESLint with hardcode detection, TypeScript strict |
 
-To learn more about developing your project with Expo, look at the following resources:
+## Environment Variables
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+All app-specific values come from `.env`. See `.env.example` for the full list.
 
-## Join the community
+**Required** (fail fast if missing):
+- `APP_NAME`, `APP_SLUG`, `IOS_BUNDLE_IDENTIFIER`, `ANDROID_PACKAGE`
 
-Join our community of developers creating universal apps.
+**Optional** (service keys):
+- AdMob IDs, RevenueCat keys, Legal URLs, EAS config
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Project Structure
+
+```
+app/              # Expo Router pages (file-based routing)
+src/
+  core/           # i18n, debug utilities
+  services/       # proService, adService, legalService, reviewService
+  types/          # TypeScript type definitions
+components/       # Shared UI components
+docs/
+  adr/            # Architecture Decision Records
+  explanation/    # Product strategy, design rationale
+  reference/      # Specs, constraints, glossary
+  how-to/         # Guides and procedures
+.claude/          # Claude Code configuration
+.github/          # CI/CD workflows, PR/issue templates
+maestro/          # E2E smoke tests
+```

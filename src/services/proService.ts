@@ -27,7 +27,7 @@ export type PriceDetails = {
   yearly?: PriceDetail;
 };
 
-const PRO_STATE_KEY = 'dotchain_pro_state_v1';
+const PRO_STATE_KEY = 'app_pro_state_v1';
 const ENTITLEMENT_ID = 'Pro_Plan';
 let configured = false;
 
@@ -59,6 +59,9 @@ function toProState(info: CustomerInfo): ProState {
     isPro,
     anonUserId: info.originalAppUserId ?? null,
     lastCheckAt: new Date().toISOString(),
+    planType: null,
+    expirationDate: null,
+    managementURL: info.managementURL ?? null,
   };
 }
 

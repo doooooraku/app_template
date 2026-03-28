@@ -3,7 +3,7 @@
 
 
 <!--
-ADR Template (DotChain)
+ADR Template
 - 1ADR = 1意思決定
 - 短く書く（目安：A4 1〜2枚）
 - “変わりやすい詳細” は本文に固定せず、正（package.json / CI / 公式 / Figma）へリンクする

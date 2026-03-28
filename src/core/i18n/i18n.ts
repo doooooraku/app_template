@@ -104,7 +104,7 @@ const useI18nStore = create<I18nState>()(
       setLang: (lang) => set({ lang: normalizeLang(lang) }),
     }),
     {
-      name: 'app-template-i18n',
+      name: 'app-i18n-lang',
       storage: createJSONStorage(() => AsyncStorage),
       onRehydrateStorage: () => (state) => {
         if (!state) return;

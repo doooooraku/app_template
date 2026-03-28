@@ -1,15 +1,18 @@
 {
   "expo": {
-    "name": "app-factory-template",
-    "slug": "app-factory-template",
+    "name": "PLACEHOLDER_NAME",
+    "slug": "PLACEHOLDER_SLUG",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "appfactorytemplate",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {

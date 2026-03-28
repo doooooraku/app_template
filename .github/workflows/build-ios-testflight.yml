@@ -1,0 +1,73 @@
+name: Build iOS & Submit to TestFlight
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-submit:
+    name: Build & Submit IPA
+    runs-on: macos-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create .env file
+        run: |
+          cat <<'DOTENV' > .env
+          APP_NAME=${{ vars.APP_NAME }}
+          APP_SLUG=${{ vars.APP_SLUG }}
+          IOS_BUNDLE_IDENTIFIER=${{ vars.IOS_BUNDLE_IDENTIFIER }}
+          ANDROID_PACKAGE=${{ vars.ANDROID_PACKAGE }}
+          ADMOB_IOS_APP_ID=${{ secrets.ADMOB_IOS_APP_ID }}
+          ADMOB_IOS_BANNER_ID=${{ secrets.ADMOB_IOS_BANNER_ID }}
+          REVENUECAT_IOS_API_KEY=${{ secrets.REVENUECAT_IOS_API_KEY }}
+          DOTENV
+
+      - name: Verify code quality
+        run: pnpm lint && pnpm type-check && pnpm test -- --passWithNoTests
+
+      - name: Build iOS IPA
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas build --platform ios --profile production --local --non-interactive --output=app.ipa
+
+      - name: Setup ASC API Key
+        run: |
+          mkdir -p secrets
+          echo "${{ secrets.ASC_API_KEY_P8_BASE64 }}" | base64 -d > secrets/AuthKey.p8
+
+      - name: Submit to TestFlight
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas submit --platform ios --path app.ipa --profile production --non-interactive --no-wait
+
+      - name: Upload IPA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iOS-IPA-${{ github.run_id }}
+          path: app.ipa
+          retention-days: 7
