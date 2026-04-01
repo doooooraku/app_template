@@ -48,3 +48,9 @@ app-example
 
 # Tamagui generated
 .tamagui/
+
+# Debug sessions
+.debug-sessions/
+
+# Store screenshots output
+screenshots/

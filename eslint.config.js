@@ -5,7 +5,7 @@ const expoConfig = require('eslint-config-expo/flat');
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ['dist/*'],
+    ignores: ['dist/*', 'scripts/store-screenshots/**', 'scripts/debug/**'],
   },
   // app.config.ts uses dynamic env var access by design (required/optional helpers)
   {

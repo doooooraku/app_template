@@ -1,0 +1,96 @@
+name: Maestro Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 18 * * *' # Daily at 03:15 JST
+
+concurrency:
+  group: maestro-smoke-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      SEGMENT_DOWNLOAD_TIMEOUT_MINS: '10'
+      ORG_GRADLE_PROJECT_reactNativeArchitectures: x86_64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Create .env for CI
+        run: cp .env.example .env
+
+      - name: Prebuild Android
+        run: npx expo prebuild --platform android --non-interactive
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build release APK
+        timeout-minutes: 35
+        run: |
+          cd android
+          ./gradlew --no-daemon --stacktrace assembleRelease
+
+      - name: Install Maestro CLI
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run Maestro smoke flow
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_7
+          disable-animations: true
+          emulator-options: '-no-window -gpu swiftshader_indirect -noaudio -no-boot-anim'
+          emulator-boot-timeout: 900
+          script: |
+            mkdir -p maestro-artifacts
+            adb install -r android/app/build/outputs/apk/release/app-release.apk
+            bash -lc 'set +e; maestro test maestro/flows/smoke.yml --format junit --output maestro-artifacts/report.xml --test-output-dir maestro-artifacts; code=$?; if [ "$code" -ne 0 ]; then echo "First run failed. Retrying once in 5 seconds..."; sleep 5; maestro test maestro/flows/smoke.yml --format junit --output maestro-artifacts/report-retry.xml --test-output-dir maestro-artifacts; code=$?; fi; adb logcat -d > maestro-artifacts/logcat.txt || true; exit "$code"'
+
+      - name: Upload Maestro artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-smoke-artifacts-${{ github.run_id }}
+          path: maestro-artifacts

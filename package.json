@@ -20,7 +20,13 @@
     "verify": "pnpm lint && pnpm type-check && pnpm format:check && pnpm test && pnpm i18n:check && pnpm config:check",
     "prepare": "git config core.hooksPath .githooks",
     "prebuild": "expo prebuild",
-    "build:android": "expo prebuild --platform android && cd android && ./gradlew bundleRelease"
+    "build:android": "expo prebuild --platform android && cd android && ./gradlew bundleRelease",
+    "dev:android": "bash scripts/dev-start.sh",
+    "ump:check": "node scripts/ump-consent-check.mjs",
+    "debug:start": "bash scripts/debug/debug_session.sh start",
+    "debug:stop": "bash scripts/debug/debug_session.sh stop",
+    "debug:status": "bash scripts/debug/debug_session.sh status",
+    "monitor": "bash scripts/debug/monitor.sh"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
