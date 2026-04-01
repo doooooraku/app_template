@@ -41,6 +41,7 @@ const zhHant: Partial<Record<TranslationKey, string>> = {
   languageNameVi: '越南語',
   languageNameTr: '土耳其語',
   languageNameNl: '荷蘭語',
+  languageNamePl: '波蘭語',
   languageNameSv: '瑞典語',
 
   // --- Purchase / Restore ---

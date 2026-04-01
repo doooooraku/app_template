@@ -41,6 +41,7 @@ const ko: Partial<Record<TranslationKey, string>> = {
   languageNameVi: '베트남어',
   languageNameTr: '튀르키예어',
   languageNameNl: '네덜란드어',
+  languageNamePl: '폴란드어',
   languageNameSv: '스웨덴어',
 
   // --- Purchase / Restore ---

@@ -41,6 +41,7 @@ const pt: Partial<Record<TranslationKey, string>> = {
   languageNameVi: 'Vietnamita',
   languageNameTr: 'Turco',
   languageNameNl: 'Holandês',
+  languageNamePl: 'Polonês',
   languageNameSv: 'Sueco',
 
   // --- Purchase / Restore ---

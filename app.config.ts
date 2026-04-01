@@ -68,6 +68,7 @@ const SUPPORTED_LOCALES = [
   'vi',
   'tr',
   'nl',
+  'pl',
   'sv',
 ];
 

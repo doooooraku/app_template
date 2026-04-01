@@ -41,6 +41,7 @@ const vi: Partial<Record<TranslationKey, string>> = {
   languageNameVi: 'Tiếng Việt',
   languageNameTr: 'Tiếng Thổ Nhĩ Kỳ',
   languageNameNl: 'Tiếng Hà Lan',
+  languageNamePl: 'Ba Lan',
   languageNameSv: 'Tiếng Thụy Điển',
 
   // --- Purchase / Restore ---
