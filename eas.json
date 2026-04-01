@@ -33,6 +33,19 @@
         "APP_ENV": "preview"
       }
     },
+    "preview-local-apk": {
+      "extends": "preview",
+      "android": {
+        "buildType": "apk",
+        "withoutCredentials": true
+      }
+    },
+    "preview-cloud-apk": {
+      "extends": "preview",
+      "android": {
+        "buildType": "apk"
+      }
+    },
     "production": {
       "extends": "base",
       "autoIncrement": true,

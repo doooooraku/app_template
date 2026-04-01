@@ -20,6 +20,7 @@ import th from './locales/th';
 import vi from './locales/vi';
 import tr from './locales/tr';
 import nl from './locales/nl';
+import pl from './locales/pl';
 import sv from './locales/sv';
 
 const dictionaries = {
@@ -40,6 +41,7 @@ const dictionaries = {
   vi,
   tr,
   nl,
+  pl,
   sv,
 } satisfies Record<string, Partial<Record<TranslationKey, string>>>;
 
