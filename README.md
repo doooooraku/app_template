@@ -17,26 +17,28 @@ pnpm dev
 
 ## What's Included
 
-| Category | Details |
-|----------|---------|
-| **Framework** | Expo 54, React Native 0.81.5, New Architecture |
-| **UI** | Tamagui, React Navigation |
-| **State** | Zustand, React Query |
-| **i18n** | 18 languages (expo-localization + custom system) |
-| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads) |
-| **CI/CD** | GitHub Actions (lint, type-check, test, iOS TestFlight) |
-| **EAS** | Build profiles (dev/preview/production), Submit (Android), Update (OTA) |
-| **Docs** | Diataxis structure, ADR template, PR template |
-| **Quality** | ESLint with hardcode detection, TypeScript strict |
+| Category         | Details                                                                 |
+| ---------------- | ----------------------------------------------------------------------- |
+| **Framework**    | Expo 54, React Native 0.81.5, New Architecture                          |
+| **UI**           | Tamagui, React Navigation                                               |
+| **State**        | Zustand, React Query                                                    |
+| **i18n**         | 18 languages (expo-localization + custom system)                        |
+| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads)                           |
+| **CI/CD**        | GitHub Actions (lint, type-check, test, iOS TestFlight)                 |
+| **EAS**          | Build profiles (dev/preview/production), Submit (Android), Update (OTA) |
+| **Docs**         | Diataxis structure, ADR template, PR template                           |
+| **Quality**      | ESLint with hardcode detection, TypeScript strict                       |
 
 ## Environment Variables
 
 All app-specific values come from `.env`. See `.env.example` for the full list.
 
 **Required** (fail fast if missing):
+
 - `APP_NAME`, `APP_SLUG`, `IOS_BUNDLE_IDENTIFIER`, `ANDROID_PACKAGE`
 
 **Optional** (service keys):
+
 - AdMob IDs, RevenueCat keys, Legal URLs, EAS config
 
 ## Project Structure

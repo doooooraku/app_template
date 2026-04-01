@@ -18,8 +18,7 @@ function optional(key: string, fallback = ''): string {
   return process.env[key] ?? fallback;
 }
 
-const toBoolean = (value?: string) =>
-  value === '1' || value === 'true' || value === 'TRUE';
+const toBoolean = (value?: string) => value === '1' || value === 'true' || value === 'TRUE';
 
 // ---------------------------------------------------------------------------
 // Identity (from .env — REQUIRED)
@@ -52,8 +51,24 @@ const admobIosAppId = optional('ADMOB_IOS_APP_ID', ADMOB_TEST_APP_ID_IOS);
 // ---------------------------------------------------------------------------
 
 const SUPPORTED_LOCALES = [
-  'en', 'ja', 'fr', 'es', 'de', 'it', 'pt', 'ru',
-  'zh-Hans', 'zh-Hant', 'ko', 'hi', 'id', 'th', 'vi', 'tr', 'nl', 'sv',
+  'en',
+  'ja',
+  'fr',
+  'es',
+  'de',
+  'it',
+  'pt',
+  'ru',
+  'zh-Hans',
+  'zh-Hant',
+  'ko',
+  'hi',
+  'id',
+  'th',
+  'vi',
+  'tr',
+  'nl',
+  'sv',
 ];
 
 const toAndroidLocaleQualifier = (locale: string): string => {

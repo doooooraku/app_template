@@ -53,7 +53,7 @@ const tr: Partial<Record<TranslationKey, string>> = {
   restoreDesc: 'Bu hesapla yapılan satın alımları geri yükleyin.',
 
   // --- Pro / Paywall ---
-  proTitle: 'Pro\'ya yükselt',
+  proTitle: "Pro'ya yükselt",
   proPlanFreeTitle: 'Ücretsiz',
   proPlanMonthlyTitle: 'Aylık',
   proPlanYearlyTitle: 'Yıllık',
@@ -65,7 +65,8 @@ const tr: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Yıllık planı başlat',
   proCtaMonthly: 'Aylık planı başlat',
   proCtaStayFree: 'Ücretsiz kal',
-  proFinePrint: 'Abonelikler otomatik olarak yenilenir. Hesap ayarlarınızdan istediğiniz zaman iptal edebilirsiniz.',
+  proFinePrint:
+    'Abonelikler otomatik olarak yenilenir. Hesap ayarlarınızdan istediğiniz zaman iptal edebilirsiniz.',
 
   // --- Legal ---
   legalSectionTitle: 'Yasal',

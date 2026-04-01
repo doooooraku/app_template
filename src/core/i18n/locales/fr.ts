@@ -17,7 +17,7 @@ const fr: Partial<Record<TranslationKey, string>> = {
   settings: 'Paramètres',
   language: 'Langue',
   theme: 'Thème',
-  version: 'Version de l\'app',
+  version: "Version de l'app",
   haptics: 'Vibrations',
   sound: 'Son',
 
@@ -46,8 +46,8 @@ const fr: Partial<Record<TranslationKey, string>> = {
   // --- Purchase / Restore ---
   restore: 'Restaurer les achats',
   purchaseSuccess: 'Le plan Pro est maintenant actif.',
-  purchaseFailed: 'L\'achat a échoué. Veuillez réessayer plus tard.',
-  restoreSuccess: 'Historique d\'achat restauré.',
+  purchaseFailed: "L'achat a échoué. Veuillez réessayer plus tard.",
+  restoreSuccess: "Historique d'achat restauré.",
   restoreNotFound: 'Aucun achat trouvé à restaurer.',
   restoreFailed: 'Échec de la restauration des achats.',
   restoreDesc: 'Restaurer les achats effectués sur ce compte.',
@@ -65,16 +65,17 @@ const fr: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Choisir le plan annuel',
   proCtaMonthly: 'Choisir le plan mensuel',
   proCtaStayFree: 'Rester en gratuit',
-  proFinePrint: 'L\'abonnement se renouvelle automatiquement. Vous pouvez annuler à tout moment dans les paramètres de votre compte.',
+  proFinePrint:
+    "L'abonnement se renouvelle automatiquement. Vous pouvez annuler à tout moment dans les paramètres de votre compte.",
 
   // --- Legal ---
   legalSectionTitle: 'Mentions légales',
   legalPrivacyPolicyLabel: 'Politique de confidentialité',
-  legalTermsOfUseLabel: 'Conditions d\'utilisation (EULA)',
+  legalTermsOfUseLabel: "Conditions d'utilisation (EULA)",
 
   // --- Errors ---
   errorLoadFailed: 'Échec du chargement des données.',
-  errorSaveFailed: 'Échec de l\'enregistrement.',
+  errorSaveFailed: "Échec de l'enregistrement.",
   errorDeleteFailed: 'Échec de la suppression.',
 };
 

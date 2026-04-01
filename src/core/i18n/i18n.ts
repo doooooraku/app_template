@@ -51,8 +51,8 @@ const isSupportedLang = (code?: string): code is Lang => {
 };
 
 const normalizeLang = (
-  rawCode?: string,
-  tag?: string,
+  rawCode?: string | null,
+  tag?: string | null,
   script?: string | null,
   region?: string | null,
 ): Lang => {

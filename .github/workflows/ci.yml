@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  lint-test:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,9 +25,9 @@ jobs:
           cache: 'pnpm'
       - name: Install deps
         run: pnpm install --frozen-lockfile
-      - name: Lint
-        run: pnpm lint
-      - name: Type check
-        run: pnpm type-check
-      - name: Test
-        run: pnpm test -- --passWithNoTests
+      - name: Create .env for CI
+        run: cp .env.example .env
+      - name: Audit dependencies
+        run: pnpm audit --audit-level=high || true
+      - name: Verify
+        run: pnpm verify

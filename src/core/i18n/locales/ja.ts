@@ -65,7 +65,8 @@ const ja: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: '年額プランを開始',
   proCtaMonthly: '月額プランを開始',
   proCtaStayFree: '無料で続ける',
-  proFinePrint: 'サブスクリプションは自動更新されます。アカウント設定からいつでもキャンセルできます。',
+  proFinePrint:
+    'サブスクリプションは自動更新されます。アカウント設定からいつでもキャンセルできます。',
 
   // --- Legal ---
   legalSectionTitle: '法的情報',

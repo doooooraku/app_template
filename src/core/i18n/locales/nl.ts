@@ -65,7 +65,8 @@ const nl: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Start jaarplan',
   proCtaMonthly: 'Start maandplan',
   proCtaStayFree: 'Gratis blijven',
-  proFinePrint: 'Abonnementen worden automatisch verlengd. Annuleer op elk moment in je accountinstellingen.',
+  proFinePrint:
+    'Abonnementen worden automatisch verlengd. Annuleer op elk moment in je accountinstellingen.',
 
   // --- Legal ---
   legalSectionTitle: 'Juridisch',

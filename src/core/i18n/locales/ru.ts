@@ -65,7 +65,8 @@ const ru: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Начать годовой план',
   proCtaMonthly: 'Начать месячный план',
   proCtaStayFree: 'Остаться на бесплатном',
-  proFinePrint: 'Подписки продлеваются автоматически. Отменить можно в любое время в настройках аккаунта.',
+  proFinePrint:
+    'Подписки продлеваются автоматически. Отменить можно в любое время в настройках аккаунта.',
 
   // --- Legal ---
   legalSectionTitle: 'Правовая информация',

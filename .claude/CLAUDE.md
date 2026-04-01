@@ -1,11 +1,13 @@
 ## Workflow
 
 ### 1. Plan Mode First
+
 - Tasks with 3+ steps or architectural impact MUST start in Plan mode
 - If stuck, stop and re-plan immediately
 - Write detailed specs before implementation
 
 ### 2. Lightweight Spec (before coding)
+
 For non-trivial features, write a brief spec using this template:
 
 ```
@@ -19,21 +21,25 @@ For non-trivial features, write a brief spec using this template:
 ```
 
 ### 3. Sub-Agent Strategy
+
 - Keep main context window clean — delegate research to sub-agents
 - 1 sub-agent = 1 task
 - Use parallel sub-agents for independent queries
 
 ### 4. Self-Improvement Loop
+
 - Record corrections in `docs/reference/tasks/lessons.md`
 - Write rules to prevent repeating the same mistakes
 - Review lessons at session start
 
 ### 5. Verify Before Done
+
 - Prove it works before marking complete
 - Run tests, check logs, diff against main
 - Ask: "Would a staff engineer approve this?"
 
 ### 6. Autonomous Bug Fixing
+
 - Fix bugs without hand-holding — read logs, errors, failing tests
 - Zero context-switching for the user
 - Fix failing CI proactively
