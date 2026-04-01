@@ -65,7 +65,8 @@ const sv: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Starta årsplan',
   proCtaMonthly: 'Starta månadsplan',
   proCtaStayFree: 'Fortsätt gratis',
-  proFinePrint: 'Prenumerationer förnyas automatiskt. Avsluta när som helst i dina kontoinställningar.',
+  proFinePrint:
+    'Prenumerationer förnyas automatiskt. Avsluta när som helst i dina kontoinställningar.',
 
   // --- Legal ---
   legalSectionTitle: 'Juridiskt',

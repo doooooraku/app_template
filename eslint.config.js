@@ -7,6 +7,13 @@ module.exports = defineConfig([
   {
     ignores: ['dist/*'],
   },
+  // app.config.ts uses dynamic env var access by design (required/optional helpers)
+  {
+    files: ['app.config.ts'],
+    rules: {
+      'expo/no-dynamic-env-var': 'off',
+    },
+  },
   // -----------------------------------------------------------------------
   // Hardcode detection — prevent app-specific values from leaking into src/
   // -----------------------------------------------------------------------
@@ -17,18 +24,15 @@ module.exports = defineConfig([
         'error',
         {
           selector: 'Literal[value=/^com\\.[a-z]+\\.[a-z]/]',
-          message:
-            'Hardcoded package/bundle ID detected. Use app.config.ts + .env instead.',
+          message: 'Hardcoded package/bundle ID detected. Use app.config.ts + .env instead.',
         },
         {
           selector: 'Literal[value=/^ca-app-pub-/]',
-          message:
-            'Hardcoded AdMob ID detected. Use app.config.ts extra + .env instead.',
+          message: 'Hardcoded AdMob ID detected. Use app.config.ts extra + .env instead.',
         },
         {
           selector: 'Literal[value=/^appl_/]',
-          message:
-            'Hardcoded RevenueCat iOS key detected. Use app.config.ts extra + .env instead.',
+          message: 'Hardcoded RevenueCat iOS key detected. Use app.config.ts extra + .env instead.',
         },
         {
           selector: 'Literal[value=/^goog_/]',

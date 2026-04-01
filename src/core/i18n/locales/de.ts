@@ -65,7 +65,8 @@ const de: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Jahresplan starten',
   proCtaMonthly: 'Monatsplan starten',
   proCtaStayFree: 'Gratis bleiben',
-  proFinePrint: 'Abonnements verlängern sich automatisch. Du kannst jederzeit in deinen Kontoeinstellungen kündigen.',
+  proFinePrint:
+    'Abonnements verlängern sich automatisch. Du kannst jederzeit in deinen Kontoeinstellungen kündigen.',
 
   // --- Legal ---
   legalSectionTitle: 'Rechtliches',

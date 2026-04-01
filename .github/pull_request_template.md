@@ -5,11 +5,13 @@ DotChain PR Template
 -->
 
 # 概要（1〜3行 / REQUIRED）
+
 <!-- 例：設定画面で言語 nl（オランダ語）時に表示が崩れる不具合を修正 -->
 
 ---
 
 ## 0. 種別（REQUIRED）
+
 - [ ] fix（バグ修正）
 - [ ] feat（機能追加）
 - [ ] refactor（仕様非変更の整理）
@@ -23,6 +25,7 @@ DotChain PR Template
 ---
 
 ## 1. 関連リンク（REQUIRED）
+
 - Issue: #
 - ADR: docs/adr/ADR-XXXX.md（該当があれば）
 - 参照（1つ以上推奨）:
@@ -36,28 +39,34 @@ DotChain PR Template
 ---
 
 ## 2. 目的（Why / REQUIRED）
+
 <!-- 「何を解決する？」「なぜ今？」を1〜5行で。長い議論はADRへ -->
+
 - ユーザー価値:
 - バグの再現条件（バグなら）:
 
 ---
 
 ## 3. 変更点（What / REQUIRED）
-<!-- レビュアーが差分を追いやすい単位で箇条書き -->
-- 
-- 
 
----
+<!-- レビュアーが差分を追いやすい単位で箇条書き -->
+
+-
+- ***
 
 ## 4. 受け入れ条件（Acceptance Criteria / RECOMMENDED）
+
 <!-- “合格/不合格が判定できる条件” を短く。理想はテスト（Jest/Maestro）で表現する -->
+
 - [ ] 条件1：
 - [ ] 条件2：
 
 ---
 
 ## 5. 影響範囲（Impact / REQUIRED）
+
 ### 5-1. 影響する箇所
+
 - 画面（UI）: S-xx / （画面名）
 - 機能: F-xx / UC-xx
 - 影響する層:
@@ -66,6 +75,7 @@ DotChain PR Template
   - [ ] 両方
 
 ### 5-2. データ/互換性
+
 - 既存データへの影響:
   - [ ] なし
   - [ ] あり（内容：　　　　　　　　　）
@@ -74,6 +84,7 @@ DotChain PR Template
   - [ ] あり（手順/ロールバック：　　　　　　　　　）
 
 ### 5-3. i18n / 端末差分
+
 - 言語/i18n 影響:
   - [ ] なし
   - [ ] あり（対象言語：　　　　　　）
@@ -84,9 +95,11 @@ DotChain PR Template
 ---
 
 ## 6. 動作確認（How to test / REQUIRED）
+
 > “合否はテストへ” の中心。ここが薄いPRは基本レビューで止める。
 
 ### 6-1. 自動テスト（該当を残す / RECOMMENDED）
+
 - [ ] pnpm test（結果：✅ / ❌）
 - [ ] pnpm lint（結果：✅ / ❌）
 - [ ] pnpm test:e2e（結果：✅ / ❌）※導入済みなら
@@ -98,20 +111,25 @@ DotChain PR Template
 > 実行できない場合は「なぜできないか」を書く（例：一時的にCI修理中／再現が端末依存 等）
 
 ### 6-2. 手動確認（手順を箇条書き / REQUIRED）
+
 <!-- “誰でも同じ手順で再現できる” 書き方 -->
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
+
 - 期待結果:
 - 実際結果:
 
 ### 6-3. 再現手順（バグ修正なら / RECOMMENDED）
+
 - Before（修正前の再現）:
 - After（修正後に再現しない）:
 
 ---
 
 ## 7. UI差分（UI変更がある場合 / REQUIRED if UI）
+
 - Before: （スクショ/動画/リンク）
 - After : （スクショ/動画/リンク）
 - Figma: （URL、該当フレーム）
@@ -119,12 +137,13 @@ DotChain PR Template
 ---
 
 ## 8. Docs影響（docs-as-code / REQUIRED）
+
 > 仕様書を死なせないための “分岐チェック”。
 
 - [ ] 仕様/前提/制約が変わる → docs/reference/constraints.md を更新（リンク：）
 - [ ] 用語が増える/意味が変わる → docs/reference/glossary.md を更新（リンク：）
 - [ ] 運用手順が変わる → docs/how-to/whole_workflow.md を更新（リンク：）
-- [ ] リリース手順に影響 → docs/how-to/android_ビルド手順.md / docs/how-to/ios_ビルド手順.md を更新（リンク：）
+- [ ] リリース手順に影響 → docs/how-to/android*ビルド手順.md / docs/how-to/ios*ビルド手順.md を更新（リンク：）
 - [ ] 意思決定が増えた/変わった → docs/adr/ADR-XXXX.md を追加 or 更新（リンク：）
 - [ ] テスト観点が変わる → テスト（Jest/Maestro）を追加/更新（リンク or 該当ファイル：）
 - [ ] どれも不要（理由：外部仕様/運用/テスト観点に影響なし、内部リファクタのみ）
@@ -132,7 +151,9 @@ DotChain PR Template
 ---
 
 ## 9. リスク評価 & ロールバック（REQUIRED）
+
 ### 9-1. リスク（短く）
+
 - 想定リスク:
 - 検知方法（どうやって気づく？）:
 - 影響の大きさ:
@@ -141,6 +162,7 @@ DotChain PR Template
   - [ ] 高（課金/データ消失/起動不可など）
 
 ### 9-2. ロールバック（戻し方 / REQUIRED）
+
 - 戻し方（最短手順）:
   - 例：このPRを revert / 前のタグへ戻す / 機能フラグOFF など
 - 影響範囲の切り分け（できれば）:
@@ -149,6 +171,7 @@ DotChain PR Template
 ---
 
 ## 10. セキュリティ / 課金 / 広告（該当時のみ / REQUIRED if 該当）
+
 - [ ] Secrets/キーを直書きしていない（APIキー/広告ユニットID/RevenueCat等）
 - [ ] 個人情報をログ出力していない
 - [ ] 通信はHTTPS前提で問題ない
@@ -159,6 +182,7 @@ DotChain PR Template
 ---
 
 ## 11. リリース影響（release/hotfix だけ / RECOMMENDED）
+
 - ストア提出が必要:
   - [ ] なし
   - [ ] あり（iOS / Android）
@@ -174,6 +198,7 @@ DotChain PR Template
 ---
 
 ## 12. PRサイズ（RECOMMENDED）
+
 - 変更行数の感覚:
   - [ ] 小（〜200行）
   - [ ] 中（〜500行）
@@ -182,6 +207,7 @@ DotChain PR Template
 ---
 
 ## 13. チェックリスト（DoD / REQUIRED）
+
 - [ ] 変更目的が1文で説明できる
 - [ ] 影響範囲（UI/機能/データ/Free/Pro）を書いた
 - [ ] “合否が判定できる” 動作確認を記載した（自動/手動）

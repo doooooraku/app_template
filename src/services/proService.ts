@@ -71,7 +71,14 @@ async function ensureConfigured() {
 
   const apiKey = getApiKey();
   if (IAP_DEBUG) {
-    console.log('[RC] platform=', Platform.OS, 'apiKey exists=', Boolean(apiKey), 'len=', apiKey?.length ?? 0);
+    console.log(
+      '[RC] platform=',
+      Platform.OS,
+      'apiKey exists=',
+      Boolean(apiKey),
+      'len=',
+      apiKey?.length ?? 0,
+    );
   }
   if (!apiKey) {
     throw new Error('RevenueCat API key is missing.');

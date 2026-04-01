@@ -65,7 +65,8 @@ const it: Partial<Record<TranslationKey, string>> = {
   proCtaYearly: 'Inizia il piano annuale',
   proCtaMonthly: 'Inizia il piano mensile',
   proCtaStayFree: 'Resta gratis',
-  proFinePrint: 'Gli abbonamenti si rinnovano automaticamente. Puoi annullare in qualsiasi momento dalle impostazioni del tuo account.',
+  proFinePrint:
+    'Gli abbonamenti si rinnovano automaticamente. Puoi annullare in qualsiasi momento dalle impostazioni del tuo account.',
 
   // --- Legal ---
   legalSectionTitle: 'Informazioni legali',
