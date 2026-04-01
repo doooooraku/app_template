@@ -2,14 +2,14 @@
 
 Expo SDK 54 + React Native 0.81.5 template with batteries included.
 
+> **Using this template?** See [TEMPLATE_README.md](TEMPLATE_README.md) for the full setup guide.
+
 ## Quick Start
 
 ```bash
-# 1. Copy .env.example and fill in your app identity
-cp .env.example .env
-
-# 2. Install dependencies
-pnpm install
+# 1. Create a new repo from this template (GitHub: "Use this template")
+# 2. Clone and run the setup script
+bash setup.sh
 
 # 3. Start development
 pnpm dev
@@ -17,17 +17,20 @@ pnpm dev
 
 ## What's Included
 
-| Category         | Details                                                                 |
-| ---------------- | ----------------------------------------------------------------------- |
-| **Framework**    | Expo 54, React Native 0.81.5, New Architecture                          |
-| **UI**           | Tamagui, React Navigation                                               |
-| **State**        | Zustand, React Query                                                    |
-| **i18n**         | 18 languages (expo-localization + custom system)                        |
-| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads)                           |
-| **CI/CD**        | GitHub Actions (lint, type-check, test, iOS TestFlight)                 |
-| **EAS**          | Build profiles (dev/preview/production), Submit (Android), Update (OTA) |
-| **Docs**         | Diataxis structure, ADR template, PR template                           |
-| **Quality**      | ESLint with hardcode detection, TypeScript strict                       |
+| Category         | Details                                                   |
+| ---------------- | --------------------------------------------------------- |
+| **Framework**    | Expo 54, React Native 0.81.5, New Architecture            |
+| **UI**           | Tamagui v1, React Navigation                              |
+| **State**        | Zustand + persist, React Query                            |
+| **Data**         | expo-sqlite with migration pattern, Supabase client       |
+| **i18n**         | 19 languages (expo-localization + custom system)          |
+| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads)             |
+| **CI/CD**        | GitHub Actions (verify, Maestro smoke, Dependabot)        |
+| **Quality**      | ESLint, Prettier, lint-staged, pre-commit hooks           |
+| **Testing**      | Jest (unit), Maestro (E2E)                                |
+| **Scripts**      | Debug toolkit, dev-start, i18n audit, screenshot pipeline |
+| **EAS**          | Build profiles (dev/preview/production), Submit, Update   |
+| **Docs**         | Diataxis structure, ADR template, PR template             |
 
 ## Environment Variables
 
@@ -39,7 +42,7 @@ All app-specific values come from `.env`. See `.env.example` for the full list.
 
 **Optional** (service keys):
 
-- AdMob IDs, RevenueCat keys, Legal URLs, EAS config
+- AdMob IDs, RevenueCat keys, Sentry DSN, Legal URLs, EAS config
 
 ## Project Structure
 
@@ -47,15 +50,14 @@ All app-specific values come from `.env`. See `.env.example` for the full list.
 app/              # Expo Router pages (file-based routing)
 src/
   core/           # i18n, debug utilities
-  services/       # proService, adService, legalService, reviewService
+  db/             # SQLite database layer
+  features/       # Vertical feature slices
+  services/       # Business logic services
+  stores/         # Zustand state stores
   types/          # TypeScript type definitions
-components/       # Shared UI components
-docs/
-  adr/            # Architecture Decision Records
-  explanation/    # Product strategy, design rationale
-  reference/      # Specs, constraints, glossary
-  how-to/         # Guides and procedures
-.claude/          # Claude Code configuration
-.github/          # CI/CD workflows, PR/issue templates
-maestro/          # E2E smoke tests
+scripts/          # Development & build scripts
+plugins/          # Expo config plugins
+docs/             # Documentation (Diataxis structure)
+__tests__/        # Unit tests
+maestro/          # E2E test flows
 ```

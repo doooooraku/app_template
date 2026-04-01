@@ -18,20 +18,46 @@
   - アプリが「何をするか」の基本仕様
 - `docs/reference/functional_spec.md`
   - 機能が「どう動くか」の仕様
+- `docs/reference/feature_spec_template.md`
+  - 機能仕様を追加するときのテンプレート
 - `docs/reference/glossary.md`
   - 用語の意味の辞書
 - `docs/reference/constraints.md`
   - 前提/制約/非ゴールの一枚岩（ルールブック）
+- `docs/reference/tasks/lessons.md`
+  - 開発中に得た教訓・学びの記録
 
 ### ADR（なぜそうしたか）
 
 - `docs/adr/ADR-*.md`
   - 意思決定の理由ログ（蒸し返し防止）
+- `docs/adr/adr_template.md`
+  - ADR を追加するときのテンプレート
 
 ### How-to（手順）
 
-- `docs/how-to/*`
-  - Issue -> PR -> CI -> Release の「やり方」
+- `docs/how-to/quickstart.md`
+  - プロジェクトの初期セットアップ手順
+- `docs/how-to/whole_workflow.md`
+  - 仕様→Issue→実装→テスト→PR→マージ→リリースの全体フロー
+- `docs/how-to/git_workflow.md`
+  - Issue→Branch→Commit→PR→Merge の Git 運用手順
+- `docs/how-to/testing.md`
+  - テストの実行方法（Jest / Maestro / CI）
+- `docs/how-to/実装ルール.md`
+  - 実装時のコード規約・設計ルール
+- `docs/how-to/android_ビルド手順.md`
+  - Android の Debug / Release ビルド手順
+- `docs/how-to/ios_ビルド手順.md`
+  - iOS の Debug / Release ビルド手順
+- `docs/how-to/sentry_setup.md`
+  - Sentry（エラー監視）のセットアップ手順
+- `docs/how-to/debug-guide.md`
+  - デバッグの進め方ガイド
+- `docs/how-to/screenshot-generation.md`
+  - ストア掲載用スクリーンショットの生成手順
+- `docs/how-to/store-listing-guide.md`
+  - ストア掲載情報の管理ガイド
 
 ---
 

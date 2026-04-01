@@ -1,6 +1,6 @@
-# DotChain Glossary（用語集 / Reference）
+# {{APP_NAME}} Glossary（用語集 / Reference）
 
-この文書は DotChain の仕様書・Issue・PR・コード内で使う「言葉の意味」を固定するための辞書です。
+この文書は {{APP_NAME}} の仕様書・Issue・PR・コード内で使う「言葉の意味」を固定するための辞書です。
 “同じものを違う言い方で呼ぶ”/“人によって意味がズレる” を防ぎます。
 
 - 種別（Diátaxis）：Reference（参照）
@@ -66,13 +66,15 @@
 
 ---
 
-## 2. プロダクト/ドメイン用語（DotChainの中身）
+## 2. プロダクト/ドメイン用語（{{APP_NAME}}の中身）
 
-### DotChain
+### {{APP_NAME}}
 
-- 定義：ローカル志向（Local-first）の習慣トラッカー。自前バックエンドを持たない。
+<!-- TODO: Fill in your app's specific details -->
+
+- 定義：（アプリの定義を記述する）
 - 同義語：なし
-- 禁止語：サーバー連携前提の言い方（例：「アカウント同期がある前提」）
+- 禁止語：（禁止すべき表現を記述する）
 
 ### 習慣（Habit）
 
@@ -207,13 +209,13 @@
 
 - 定義：言語を表す短いコード。BCP47/IANAのサブタグを正とする。
 - 例：`nl` は Dutch（オランダ語）
-- DotChainでの決定：`nl` を“正”として扱う（constraintsの決定に従う）
+- このプロジェクトでの決定：`nl` を”正”として扱う（constraintsの決定に従う）
 
 ### LTR / RTL
 
 - LTR：Left-to-Right（左→右）。英語/日本語など
 - RTL：Right-to-Left（右→左）。アラビア語など
-- DotChain方針：LTRのみ（RTLは非対応）
+- 本プロジェクト方針：LTRのみ（RTLは非対応）
 
 ---
 

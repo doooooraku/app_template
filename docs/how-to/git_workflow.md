@@ -63,7 +63,7 @@ pnpm install
 
 ### 3.2 main ブランチを使う前提
 
-この手順は **main が本流**の前提です（DotChainは main を使用）。
+この手順は **main が本流**の前提です。
 
 ---
 
