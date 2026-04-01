@@ -23,7 +23,7 @@
 - **CIで実行される順番**：`.github/workflows/ci.yml`
 - **実行コマンドの定義**：`package.json` → `scripts`
 
-DotChain の scripts（例）：
+scripts（例）：
 
 - `pnpm lint`
 - `pnpm test`
@@ -77,7 +77,7 @@ pnpm type-check
 
 ## 3. E2E（必要なときだけ）：Maestro smoke
 
-DotChain には E2E の入口として `test:e2e` が用意されています。
+このテンプレートには E2E の入口として `test:e2e` が用意されています。
 
 ```bash
 pnpm test:e2e
