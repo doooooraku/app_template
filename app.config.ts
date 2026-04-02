@@ -122,6 +122,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ios: { deploymentTarget: '15.5' },
   });
 
+  plugins = ensurePlugin(plugins, 'expo-font');
+  plugins = ensurePlugin(plugins, 'expo-image');
+  plugins = ensurePlugin(plugins, 'expo-secure-store');
+  plugins = ensurePlugin(plugins, 'expo-sqlite');
+  plugins = ensurePlugin(plugins, 'expo-web-browser');
+
   plugins = ensurePlugin(plugins, 'react-native-google-mobile-ads', {
     androidAppId: admobAndroidAppId,
     iosAppId: admobIosAppId,
