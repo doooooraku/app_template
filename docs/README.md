@@ -36,6 +36,8 @@
 
 ### How-to（手順）
 
+- `docs/how-to/template-usage-guide.md`
+  - テンプレートの使い方完全ガイド（Phase 0〜4）
 - `docs/how-to/quickstart.md`
   - プロジェクトの初期セットアップ手順
 - `docs/how-to/whole_workflow.md`

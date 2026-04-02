@@ -1,56 +1,56 @@
-# Store Listing Guide
+# ストア掲載ガイド
 
-## Overview
+## 概要
 
-Both Apple App Store and Google Play require localized store listings. This guide covers the process for creating and maintaining them.
+Apple App Store と Google Play では、どちらもローカライズ（多言語対応）されたストア掲載情報が必要です。このガイドでは、掲載情報の作成と管理の手順を説明します。
 
-## Store Listing Components
+## ストア掲載の構成要素
 
 ### Google Play
 
-| Field             | Max Length          | Notes                               |
-| ----------------- | ------------------- | ----------------------------------- |
-| Title             | 30 chars            | App name + key benefit              |
-| Short description | 80 chars            | One-line elevator pitch             |
-| Full description  | 4000 chars          | Features, benefits, differentiators |
-| Screenshots       | 2-8 per device type | Phone (required), Tablet (optional) |
-| Feature graphic   | 1024x500            | Promotional banner                  |
+| 項目                     | 最大文字数                 | 備考                                       |
+| ------------------------ | -------------------------- | ------------------------------------------ |
+| タイトル                 | 30 文字                    | アプリ名 + 主なメリット                    |
+| 短い説明                 | 80 文字                    | 一言でアプリを紹介する文                   |
+| 詳しい説明               | 4000 文字                  | 機能・メリット・他アプリとの違い           |
+| スクリーンショット       | デバイス種別ごとに 2〜8 枚 | スマートフォン（必須）、タブレット（任意） |
+| フィーチャーグラフィック | 1024x500                   | プロモーション用バナー画像                 |
 
 ### Apple App Store
 
-| Field            | Max Length          | Notes                         |
-| ---------------- | ------------------- | ----------------------------- |
-| App name         | 30 chars            | Same as Google Play title     |
-| Subtitle         | 30 chars            | Similar to short description  |
-| Description      | 4000 chars          | No HTML/markdown allowed      |
-| Promotional text | 170 chars           | Can be changed without review |
-| Screenshots      | Up to 10 per device | 6.7", 6.5", 5.5" required     |
+| 項目                   | 最大文字数               | 備考                          |
+| ---------------------- | ------------------------ | ----------------------------- |
+| アプリ名               | 30 文字                  | Google Play のタイトルと同じ  |
+| サブタイトル           | 30 文字                  | 短い説明と同じような内容      |
+| 説明                   | 4000 文字                | HTML やマークダウンは使えない |
+| プロモーションテキスト | 170 文字                 | 審査なしで変更できる          |
+| スクリーンショット     | デバイスごとに最大 10 枚 | 6.7"、6.5"、5.5" が必須       |
 
-## Workflow
+## ワークフロー
 
-### 1. Write English Copy First
+### 1. まず英語の文章を書く
 
-Start with the English (en-US) listing:
+英語（en-US）の掲載情報から始めます。
 
-- Write compelling, benefit-focused copy
-- Focus on what the user gets, not technical features
-- Use action verbs and clear language
+- ユーザーにとってのメリットが伝わる、魅力的な文章を書く
+- 技術的な機能よりも、ユーザーが得られる価値に焦点を当てる
+- 動作を表す動詞を使い、わかりやすい言葉で書く
 
-### 2. Generate Translations
+### 2. 翻訳を生成する
 
-Use Claude Code to translate to all 19 locales:
+Claude Code を使って 19 ロケールすべてに翻訳します。
 
-- Provide the English copy as source
-- Request translations that feel natural (not literal)
-- Review key markets (ja, de, fr, es) carefully
+- 英語の文章をソースとして渡す
+- 直訳ではなく、自然に読める翻訳をリクエストする
+- 主要市場（ja、de、fr、es）は特に注意してレビューする
 
-### 3. Generate Screenshots
+### 3. スクリーンショットを生成する
 
-Follow the [Screenshot Generation Guide](./screenshot-generation.md).
+[スクリーンショット生成ガイド](./screenshot-generation.md)に従ってください。
 
-### 4. Upload to Stores
+### 4. ストアにアップロードする
 
-Store listing files are organized in `docs/store-listing/`:
+ストア掲載ファイルは `docs/store-listing/` に整理されています。
 
 ```
 docs/store-listing/
@@ -66,11 +66,11 @@ docs/store-listing/
       ...
 ```
 
-## Localization Tips
+## ローカライズのコツ
 
-- Each market has different expectations for tone and style
-- Japanese: formal, feature-focused
-- German: precise, technical
-- Spanish: warm, benefit-focused
-- Don't translate app name unless there's a strong local brand reason
-- Test that translated text fits within character limits
+- 市場ごとにトーンやスタイルの期待値が異なります
+- 日本語: フォーマルで、機能を重視した表現
+- ドイツ語: 正確で、技術的な表現
+- スペイン語: 温かみがあり、メリットを重視した表現
+- アプリ名は、現地で強いブランド上の理由がない限り翻訳しないこと
+- 翻訳後のテキストが文字数制限内に収まっているかテストすること

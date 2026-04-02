@@ -1,93 +1,93 @@
-# App Factory Template
+# App Factory テンプレート
 
-A batteries-included Expo template for building production-ready mobile apps.
+本番レベルのモバイルアプリをすぐに作り始められる、全部入りの Expo テンプレートです。
 
-## What's Included
+## 含まれているもの
 
-| Category         | Details                                                       |
-| ---------------- | ------------------------------------------------------------- |
-| **Framework**    | Expo SDK 55, React Native 0.83.4, Expo Router v55             |
-| **UI**           | Tamagui v1, Reanimated, Gesture Handler                       |
-| **State**        | Zustand + AsyncStorage persist                                |
-| **Data**         | expo-sqlite with migration pattern                            |
-| **i18n**         | 19 languages, auto-detection, Zustand-based                   |
-| **Monetization** | RevenueCat (IAP), AdMob (ads), UMP consent                    |
-| **CI/CD**        | GitHub Actions (verify, Maestro smoke, Dependabot)            |
-| **Quality**      | ESLint, Prettier, lint-staged, pre-commit hooks               |
-| **Testing**      | Jest (unit), Maestro (E2E)                                    |
-| **Scripts**      | Debug toolkit, dev-start, i18n audit, config check, UMP check |
-| **Screenshots**  | Playwright + Sharp store screenshot pipeline                  |
-| **Docs**         | Diataxis structure (explanation, reference, how-to, ADR)      |
+| カテゴリ               | 内容                                                             |
+| ---------------------- | ---------------------------------------------------------------- |
+| **フレームワーク**     | Expo SDK 55, React Native 0.83.4, Expo Router v55                |
+| **UI**                 | Tamagui v1, Reanimated, Gesture Handler                          |
+| **状態管理**           | Zustand + AsyncStorage による永続化（persist）                   |
+| **データ**             | expo-sqlite（マイグレーション対応）                              |
+| **多言語対応**         | 19 言語、自動検出、Zustand ベース                                |
+| **収益化**             | RevenueCat（アプリ内課金）、AdMob（広告）、UMP 同意管理          |
+| **CI/CD**              | GitHub Actions（verify、Maestro smoke、Dependabot）              |
+| **品質管理**           | ESLint, Prettier, lint-staged, pre-commit hooks                  |
+| **テスト**             | Jest（ユニット）、Maestro（E2E）                                 |
+| **スクリプト**         | デバッグツール、dev-start、i18n 監査、設定チェック、UMP チェック |
+| **スクリーンショット** | Playwright + Sharp によるストア掲載用スクショパイプライン        |
+| **ドキュメント**       | Diataxis 構成（explanation、reference、how-to、ADR）             |
 
-## Quick Start
+## クイックスタート
 
 ```bash
-# 1. Create a new repo from this template (GitHub UI: "Use this template")
+# 1. このテンプレートから新しいリポジトリを作成（GitHub の「Use this template」ボタン）
 
-# 2. Clone and run setup
+# 2. クローンしてセットアップを実行
 git clone https://github.com/YOUR_USER/YOUR_APP.git
 cd YOUR_APP
 bash setup.sh
 
-# 3. Start developing
+# 3. 開発を始める
 pnpm dev
 ```
 
-## Setup Script
+## セットアップスクリプト
 
-`setup.sh` replaces all `{{PLACEHOLDER}}` values:
+`setup.sh` を実行すると、すべての `{{PLACEHOLDER}}` が実際の値に置き換わります。
 
-| Placeholder                 | Description          | Example             |
-| --------------------------- | -------------------- | ------------------- |
-| `{{APP_NAME}}`              | Display name         | `MyApp`             |
-| `{{APP_SLUG}}`              | URL-safe slug        | `myapp`             |
-| `{{ANDROID_PACKAGE}}`       | Android package      | `com.example.myapp` |
-| `{{IOS_BUNDLE_IDENTIFIER}}` | iOS bundle ID        | `com.example.myapp` |
-| `{{APP_SCHEME}}`            | Deep link scheme     | `myapp`             |
-| `{{DESCRIPTION}}`           | One-line description | `A great app`       |
-| `{{EAS_PROJECT_ID}}`        | EAS project ID       | `uuid`              |
+| プレースホルダー            | 説明                   | 例                  |
+| --------------------------- | ---------------------- | ------------------- |
+| `{{APP_NAME}}`              | 表示名                 | `MyApp`             |
+| `{{APP_SLUG}}`              | URL 用スラッグ         | `myapp`             |
+| `{{ANDROID_PACKAGE}}`       | Android パッケージ名   | `com.example.myapp` |
+| `{{IOS_BUNDLE_IDENTIFIER}}` | iOS バンドル ID        | `com.example.myapp` |
+| `{{APP_SCHEME}}`            | ディープリンクスキーム | `myapp`             |
+| `{{DESCRIPTION}}`           | 一行の説明文           | `A great app`       |
+| `{{EAS_PROJECT_ID}}`        | EAS プロジェクト ID    | `uuid`              |
 
-## Key Commands
+## 主なコマンド
 
 ```bash
-pnpm dev              # Start Metro bundler
-pnpm verify           # Run all quality checks
-pnpm dev:android      # ADB check + port forward + Metro
-pnpm test             # Run unit tests
-pnpm test:e2e         # Run Maestro E2E tests
-pnpm i18n:audit       # Find unused/missing i18n keys
-pnpm format:fix       # Auto-format all files
-pnpm debug:start      # Start debug session
-pnpm debug:stop       # Stop and collect debug artifacts
-pnpm monitor          # Real-time crash/error monitor
+pnpm dev              # Metro バンドラーを起動
+pnpm verify           # すべての品質チェックを実行
+pnpm dev:android      # ADB 確認 + ポート転送 + Metro 起動
+pnpm test             # ユニットテストを実行
+pnpm test:e2e         # Maestro E2E テストを実行
+pnpm i18n:audit       # 未使用・不足している i18n キーを検出
+pnpm format:fix       # 全ファイルを自動フォーマット
+pnpm debug:start      # デバッグセッションを開始
+pnpm debug:stop       # デバッグセッションを終了してログを収集
+pnpm monitor          # リアルタイムでクラッシュ・エラーを監視
 ```
 
-## Project Structure
+## プロジェクト構成
 
 ```
-app/                  # Expo Router pages
+app/                  # Expo Router ページ
 src/
-  core/               # Shared utilities (i18n, debug)
-  db/                 # SQLite database layer
-  features/           # Vertical feature slices
-  services/           # Business logic services
-  stores/             # Zustand state stores
-  types/              # TypeScript type definitions
-scripts/              # Development & build scripts
-plugins/              # Expo config plugins
-docs/                 # Documentation (Diataxis structure)
-__tests__/            # Unit tests
-maestro/              # E2E test flows
+  core/               # 共通ユーティリティ（i18n、デバッグ）
+  db/                 # SQLite データベース層
+  features/           # 機能ごとの垂直スライス
+  services/           # ビジネスロジックサービス
+  stores/             # Zustand ステートストア
+  types/              # TypeScript 型定義
+scripts/              # 開発・ビルドスクリプト
+plugins/              # Expo 設定プラグイン
+docs/                 # ドキュメント（Diataxis 構成）
+__tests__/            # ユニットテスト
+maestro/              # E2E テストフロー
 ```
 
-## Documentation
+## ドキュメント
 
-See `docs/README.md` for the full documentation map.
+ドキュメントの全体マップは `docs/README.md` を参照してください。
 
-## After Setup
+## セットアップ後にやること
 
-1. Fill in `.env` with your API keys (AdMob, RevenueCat, Sentry, EAS)
-2. Remove example code in `src/features/example/` and `src/db/`
-3. Update `docs/explanation/product_strategy.md` with your product vision
-4. Update `docs/reference/functional_spec.md` with your features
-5. Create your first ADR in `docs/adr/`
+1. `.env` に API キーを入力する（AdMob、RevenueCat、Sentry、EAS）
+2. `src/features/example/` と `src/db/` のサンプルコードを削除する
+3. `docs/explanation/product_strategy.md` にプロダクトのビジョンを書く
+4. `docs/reference/functional_spec.md` に機能仕様を書く
+5. `docs/adr/` に最初の ADR（Architecture Decision Record）を作成する

@@ -1,104 +1,108 @@
-# Quick Start Guide
+# クイックスタートガイド
 
-## Prerequisites
+## 重要: Expo Go では動作しません
 
-- Node.js >= 22 (recommend using nvm)
-- pnpm (`npm install -g pnpm`)
-- Android Studio (for Android development)
-- Xcode (for iOS development, macOS only)
-- EAS CLI (`npm install -g eas-cli`)
+このテンプレートには AdMob、RevenueCat、SQLite などのネイティブモジュール（Native Module）が含まれているため、Expo Go では動作しません。アプリを実行するには、必ず開発ビルド（Dev Build）を作成してください。開発ビルドの作り方は「ビルド」セクションを参照してください。
 
-## Initial Setup
+## 必要なもの
+
+- Node.js 22 以上（nvm の利用をおすすめします）
+- pnpm（`npm install -g pnpm`）
+- Android Studio（Android 開発用）
+- Xcode（iOS 開発用、macOS のみ）
+- EAS CLI（`npm install -g eas-cli`）
+
+## 初期セットアップ
 
 ```bash
-# 1. Clone and enter the project
+# 1. リポジトリをクローンして移動
 git clone <your-repo-url>
 cd <your-project>
 
-# 2. Install dependencies
+# 2. 依存パッケージをインストール
 pnpm install
 
-# 3. Copy environment file
+# 3. 環境設定ファイルをコピー
 cp .env.example .env
-# Edit .env with your API keys
+# .env を開いて、API キーを入力してください
 
-# 4. Verify everything works
+# 4. すべて正しく動くか確認
 pnpm verify
 ```
 
-## Development Workflow
+## 開発の流れ
 
-### Android (Physical Device)
+### Android（実機）
 
 ```bash
-# One-command startup (checks ADB, sets up port forwarding, starts Metro)
+# ワンコマンドで起動（ADB 確認・ポート転送・Metro 起動をまとめて行います）
 pnpm dev:android
 
-# Or manually:
-adb devices                          # Verify device is connected
-adb reverse tcp:8081 tcp:8081       # Port forwarding
-pnpm dev                            # Start Metro
+# 手動で行う場合:
+adb devices                          # デバイスが接続されているか確認
+adb reverse tcp:8081 tcp:8081       # ポート転送
+pnpm dev                            # Metro を起動
 ```
 
-### Android (Emulator)
+### Android（エミュレータ）
 
 ```bash
 pnpm dev
-# Press 'a' in Metro to open on Android emulator
+# Metro で 'a' キーを押すと Android エミュレータで開きます
 ```
 
-### iOS (Simulator, macOS only)
+### iOS（シミュレータ、macOS のみ）
 
 ```bash
 pnpm dev
-# Press 'i' in Metro to open on iOS simulator
+# Metro で 'i' キーを押すと iOS シミュレータで開きます
 ```
 
-## Building
+## ビルド
 
-### Development Build (for dev-client)
+### 開発ビルド（Dev Build）（dev-client 用）
 
 ```bash
-# Local build
+# ローカルビルド
 eas build -p android --profile development --local
 
-# Cloud build
+# クラウドビルド
 eas build -p android --profile development
 ```
 
-### Preview Build (for testing)
+### プレビュービルド（Preview Build）（テスト用）
 
 ```bash
 eas build -p android --profile preview
 ```
 
-### Production Build
+### 本番ビルド（Production Build）
 
 ```bash
 eas build -p android --profile production
 ```
 
-## Debugging
+## デバッグ
 
 ```bash
-# Start a debug session (captures logs, screenshots, recordings)
+# デバッグセッションを開始（ログ・スクリーンショット・録画を記録します）
 pnpm debug:start
 
-# ... operate the app ...
+# ... アプリを操作する ...
 
-# Stop and collect artifacts
+# セッションを終了してデータを回収
 pnpm debug:stop
 
-# Real-time crash monitoring
+# リアルタイムのクラッシュ監視
 pnpm monitor
 ```
 
-## Testing
+## テスト
 
 ```bash
-# Unit tests
+# ユニットテスト
 pnpm test
 
-# E2E tests (requires built APK + emulator/device)
+# E2E テスト（ビルド済み APK + エミュレータまたは実機が必要です）
 pnpm test:e2e
 ```

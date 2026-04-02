@@ -1,80 +1,80 @@
-# Debug Guide
+# デバッグガイド
 
-## Debug Session Management
+## デバッグセッションの管理
 
-The debug toolkit (`scripts/debug/`) provides structured debugging with automatic artifact collection.
+デバッグツールキット（`scripts/debug/`）を使うと、デバッグの手順を整理しながら、ログやスクリーンショットなどを自動で集めることができます。
 
-### Starting a Session
+### セッションを開始する
 
 ```bash
-pnpm debug:start           # With screen recording
-pnpm debug:start --no-record  # Without recording (faster)
+pnpm debug:start           # 画面録画あり
+pnpm debug:start --no-record  # 画面録画なし（より速い）
 ```
 
-This will:
+開始すると、以下の処理が自動で行われます:
 
-1. Verify device connection
-2. Clear logcat buffer
-3. Take a "before" screenshot
-4. Start logcat collection in background
-5. Start screen recording (optional)
+1. デバイスの接続を確認
+2. logcat のバッファをクリア
+3. 「操作前」のスクリーンショットを撮影
+4. バックグラウンドで logcat の収集を開始
+5. 画面録画を開始（オプション）
 
-### Stopping a Session
+### セッションを終了する
 
 ```bash
 pnpm debug:stop
 ```
 
-This collects all artifacts into `.debug-sessions/session_YYYYMMDD_HHMMSS/`:
+終了すると、すべてのデータが `.debug-sessions/session_YYYYMMDD_HHMMSS/` に保存されます:
 
-| Artifact        | Description                           |
-| --------------- | ------------------------------------- |
-| `before.png`    | Screenshot before operations          |
-| `after.png`     | Screenshot after operations           |
-| `logcat.log`    | Full log during session               |
-| `recording.mp4` | Screen recording                      |
-| `meminfo.txt`   | Memory usage snapshot                 |
-| `summary.md`    | Session summary with extracted errors |
+| ファイル名      | 説明                                 |
+| --------------- | ------------------------------------ |
+| `before.png`    | 操作前のスクリーンショット           |
+| `after.png`     | 操作後のスクリーンショット           |
+| `logcat.log`    | セッション中の全ログ                 |
+| `recording.mp4` | 画面録画                             |
+| `meminfo.txt`   | メモリ使用量のスナップショット       |
+| `summary.md`    | セッションのまとめ（エラー抽出つき） |
 
-### Checking Status
+### セッションの状態を確認する
 
 ```bash
 pnpm debug:status
 ```
 
-## Real-time Monitoring
+## リアルタイム監視
 
 ```bash
 pnpm monitor
 ```
 
-The monitor script tracks:
+監視スクリプトは以下を追跡します:
 
-- App process PID
-- Crashes and ANRs
-- Error-level log messages
-- Auto-saves crash logs
+- アプリプロセスの PID
+- クラッシュと ANR（Application Not Responding）
+- エラーレベルのログメッセージ
+- クラッシュログの自動保存
 
-## Common Debug Scenarios
+## よくあるデバッグの場面
 
-### App Crash
+### アプリがクラッシュしたとき
 
-1. Start a debug session: `pnpm debug:start`
-2. Reproduce the crash
-3. Stop the session: `pnpm debug:stop`
-4. Check `.debug-sessions/session_*/summary.md` for extracted errors
-5. Check `logcat.log` for full stack traces
+1. デバッグセッションを開始する: `pnpm debug:start`
+2. クラッシュを再現する
+3. セッションを終了する: `pnpm debug:stop`
+4. `.debug-sessions/session_*/summary.md` でエラー内容を確認する
+5. `logcat.log` でスタックトレース（Stack Trace）の詳細を確認する
 
-### Memory Issues
+### メモリの問題が疑われるとき
 
-1. Run the app for the suspected duration
-2. Stop the session to capture `meminfo.txt`
-3. Compare memory usage over time
+1. 問題が起きそうな時間だけアプリを動かす
+2. セッションを終了して `meminfo.txt` を取得する
+3. メモリ使用量の変化を比べる
 
-### WSL2 Specific
+### WSL2 を使っている場合
 
-If using WSL2 with a physical device:
+WSL2 で実機を使うときの注意点:
 
-- The scripts automatically handle `ADB_SERVER_SOCKET` issues
-- Use `env -u ADB_SERVER_SOCKET adb devices` to verify connection
-- Port forwarding is set up automatically by `dev-start.sh`
+- スクリプトは `ADB_SERVER_SOCKET` の問題を自動的に処理します
+- 接続の確認には `env -u ADB_SERVER_SOCKET adb devices` を使ってください
+- ポート転送は `dev-start.sh` によって自動的に設定されます
