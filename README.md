@@ -1,6 +1,6 @@
 # App Factory Template
 
-Expo SDK 54 + React Native 0.81.5 template with batteries included.
+Expo SDK 55 + React Native 0.83.4 template with batteries included.
 
 > **Using this template?** See [TEMPLATE_README.md](TEMPLATE_README.md) for the full setup guide.
 
@@ -19,7 +19,7 @@ pnpm dev
 
 | Category         | Details                                                   |
 | ---------------- | --------------------------------------------------------- |
-| **Framework**    | Expo 54, React Native 0.81.5, New Architecture            |
+| **Framework**    | Expo 55, React Native 0.83.4, New Architecture            |
 | **UI**           | Tamagui v1, React Navigation                              |
 | **State**        | Zustand + persist, React Query                            |
 | **Data**         | expo-sqlite with migration pattern, Supabase client       |

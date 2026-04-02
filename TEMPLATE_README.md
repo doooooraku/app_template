@@ -6,7 +6,7 @@ A batteries-included Expo template for building production-ready mobile apps.
 
 | Category         | Details                                                       |
 | ---------------- | ------------------------------------------------------------- |
-| **Framework**    | Expo SDK 54, React Native 0.81.5, Expo Router v6              |
+| **Framework**    | Expo SDK 55, React Native 0.83.4, Expo Router v55             |
 | **UI**           | Tamagui v1, Reanimated, Gesture Handler                       |
 | **State**        | Zustand + AsyncStorage persist                                |
 | **Data**         | expo-sqlite with migration pattern, Supabase client           |
