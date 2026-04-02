@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
       - name: Setup Node
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Verify placeholder integrity
         run: |
           ALLOWED="APP_NAME APP_SLUG ANDROID_PACKAGE IOS_BUNDLE_IDENTIFIER APP_SCHEME DESCRIPTION EAS_PROJECT_ID PLACEHOLDER"
