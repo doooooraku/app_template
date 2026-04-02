@@ -1,63 +1,63 @@
-# App Factory Template
+# App Factory テンプレート
 
-Expo SDK 55 + React Native 0.83.4 template with batteries included.
+Expo SDK 55 + React Native 0.83.4 の全部入りテンプレートです。
 
-> **Using this template?** See [TEMPLATE_README.md](TEMPLATE_README.md) for the full setup guide.
+> **このテンプレートを使う方へ** セットアップの手順は [TEMPLATE_README.md](TEMPLATE_README.md) をご覧ください。
 
-## Quick Start
+## クイックスタート
 
 ```bash
-# 1. Create a new repo from this template (GitHub: "Use this template")
-# 2. Clone and run the setup script
+# 1. このテンプレートから新しいリポジトリを作成（GitHub の「Use this template」ボタン）
+# 2. クローンしてセットアップスクリプトを実行
 bash setup.sh
 
-# 3. Start development
+# 3. 開発を始める
 pnpm dev
 ```
 
-## What's Included
+## 含まれているもの
 
-| Category         | Details                                                   |
-| ---------------- | --------------------------------------------------------- |
-| **Framework**    | Expo 55, React Native 0.83.4, New Architecture            |
-| **UI**           | Tamagui v1, React Navigation                              |
-| **State**        | Zustand + persist, React Query                            |
-| **Data**         | expo-sqlite with migration pattern                        |
-| **i18n**         | 19 languages (expo-localization + custom system)          |
-| **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads)             |
-| **CI/CD**        | GitHub Actions (verify, Maestro smoke, Dependabot)        |
-| **Quality**      | ESLint, Prettier, lint-staged, pre-commit hooks           |
-| **Testing**      | Jest (unit), Maestro (E2E)                                |
-| **Scripts**      | Debug toolkit, dev-start, i18n audit, screenshot pipeline |
-| **EAS**          | Build profiles (dev/preview/production), Submit, Update   |
-| **Docs**         | Diataxis structure, ADR template, PR template             |
+| カテゴリ           | 内容                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| **フレームワーク** | Expo 55, React Native 0.83.4, New Architecture               |
+| **UI**             | Tamagui v1, React Navigation                                 |
+| **状態管理**       | Zustand + persist, React Query                               |
+| **データ**         | expo-sqlite（マイグレーション対応）                          |
+| **多言語対応**     | 19 言語（expo-localization + 独自システム）                  |
+| **収益化**         | RevenueCat（サブスクリプション）、AdMob + UMP（広告）        |
+| **CI/CD**          | GitHub Actions（verify、Maestro smoke、Dependabot）          |
+| **品質管理**       | ESLint, Prettier, lint-staged, pre-commit hooks              |
+| **テスト**         | Jest（ユニット）、Maestro（E2E）                             |
+| **スクリプト**     | デバッグツール、dev-start、i18n 監査、スクショパイプライン   |
+| **EAS**            | ビルドプロファイル（dev/preview/production）、Submit、Update |
+| **ドキュメント**   | Diataxis 構成、ADR テンプレート、PR テンプレート             |
 
-## Environment Variables
+## 環境変数（Environment Variables）
 
-All app-specific values come from `.env`. See `.env.example` for the full list.
+アプリ固有の値はすべて `.env` から読み込みます。一覧は `.env.example` を参照してください。
 
-**Required** (fail fast if missing):
+**必須**（未設定だと起動時にエラー）:
 
 - `APP_NAME`, `APP_SLUG`, `IOS_BUNDLE_IDENTIFIER`, `ANDROID_PACKAGE`
 
-**Optional** (service keys):
+**任意**（サービスキー）:
 
-- AdMob IDs, RevenueCat keys, Sentry DSN, Legal URLs, EAS config
+- AdMob ID、RevenueCat キー、Sentry DSN、利用規約 URL、EAS 設定
 
-## Project Structure
+## プロジェクト構成
 
 ```
-app/              # Expo Router pages (file-based routing)
+app/              # Expo Router ページ（ファイルベースルーティング）
 src/
-  core/           # i18n, debug utilities
-  db/             # SQLite database layer
-  features/       # Vertical feature slices
-  services/       # Business logic services
-  stores/         # Zustand state stores
-  types/          # TypeScript type definitions
-scripts/          # Development & build scripts
-plugins/          # Expo config plugins
-docs/             # Documentation (Diataxis structure)
-__tests__/        # Unit tests
-maestro/          # E2E test flows
+  core/           # i18n、デバッグユーティリティ
+  db/             # SQLite データベース層
+  features/       # 機能ごとの垂直スライス
+  services/       # ビジネスロジックサービス
+  stores/         # Zustand ステートストア
+  types/          # TypeScript 型定義
+scripts/          # 開発・ビルドスクリプト
+plugins/          # Expo 設定プラグイン
+docs/             # ドキュメント（Diataxis 構成）
+__tests__/        # ユニットテスト
+maestro/          # E2E テストフロー
 ```

@@ -1,88 +1,88 @@
-# Feature Spec: [Feature Name]
+# 機能仕様書（Feature Spec）: [機能名]
 
 > Issue: #xxx
 > Date: YYYY-MM-DD
 > Status: Draft / Approved / Implemented
 
-## Goal (Why)
+## 目的（なぜこの機能が必要か）
 
-<!-- 1-2 sentences: why this feature exists, what user value it delivers -->
+<!-- 1-2文で、この機能が存在する理由と、ユーザーにどんな価値を届けるかを書く -->
 
-## Acceptance Criteria
+## 受け入れ条件（Acceptance Criteria）
 
 - [ ] AC-1:
 - [ ] AC-2:
 - [ ] AC-3:
 
-## Scope
+## スコープ
 
-### In Scope
-
--
-
-### Out of Scope (Non-goals)
+### 対象範囲
 
 -
 
-## Design
+### 対象外（Non-goals）
 
-### Affected Files
+-
 
-| File      | Change |
-| --------- | ------ |
-| `src/...` |        |
-| `app/...` |        |
+## 設計
 
-### State Changes
+### 影響するファイル
 
-<!-- Zustand store / React Query cache changes -->
+| ファイル  | 変更内容 |
+| --------- | -------- |
+| `src/...` |          |
+| `app/...` |          |
 
-## Impact Checklist
+### 状態の変更
 
-### DB Schema
+<!-- Zustand ストア / React Query キャッシュの変更点 -->
 
-- [ ] No DB changes
-- [ ] New table / column added
-  - [ ] Migration is idempotent (column existence check before ALTER TABLE)
-  - [ ] `PRAGMA user_version` is unconditionally set after migration
-  - [ ] Backup types (`BackupXxx`) updated with new field (as optional `?`)
-  - [ ] Export mapping in backupService updated
-  - [ ] Import INSERT statement in backupService updated
+## 影響チェックリスト
 
-### i18n
+### DB スキーマ
 
-- [ ] No new translation keys
-- [ ] New keys added to `en.ts`
-  - [ ] All 18 locale files explicitly override new keys (do NOT rely on `...baseEn` fallback)
-  - [ ] `pnpm i18n:check` passes
+- [ ] DB の変更なし
+- [ ] 新しいテーブル / カラムを追加
+  - [ ] マイグレーションが冪等（べきとう）である（ALTER TABLE の前にカラムの存在をチェックする）
+  - [ ] `PRAGMA user_version` がマイグレーション後に無条件でセットされる
+  - [ ] バックアップ型（`BackupXxx`）に新しいフィールドを追加済み（オプショナル `?` として）
+  - [ ] backupService のエクスポートマッピングを更新済み
+  - [ ] backupService のインポート INSERT 文を更新済み
 
-### Documents
+### i18n（多言語対応）
 
-- [ ] No doc changes needed
-- [ ] Updated files:
-  - [ ] `constraints.md` (if rules/limits changed)
-  - [ ] `functional_spec.md` (if behavior changed)
-  - [ ] `glossary.md` (if new terms introduced)
-  - [ ] ADR created (if architectural decision made)
+- [ ] 新しい翻訳キーなし
+- [ ] `en.ts` に新しいキーを追加
+  - [ ] 18 個すべてのロケールファイルで新しいキーを明示的にオーバーライド済み（`...baseEn` のフォールバックに頼らないこと）
+  - [ ] `pnpm i18n:check` が通る
 
-### User-Facing Text
+### ドキュメント
 
-- [ ] No technical jargon in user-visible strings (no filenames, JSON, schema references)
+- [ ] ドキュメントの変更なし
+- [ ] 更新したファイル:
+  - [ ] `constraints.md`（ルールや制限が変わった場合）
+  - [ ] `functional_spec.md`（動作が変わった場合）
+  - [ ] `glossary.md`（新しい用語が出てきた場合）
+  - [ ] ADR を作成（アーキテクチャに関する決定をした場合）
 
-## Test Plan
+### ユーザー向けテキスト
 
-### Unit Tests
+- [ ] ユーザーに見える文字列に専門用語を含めない（ファイル名、JSON、スキーマの参照などを使わない）
 
-- [ ]
+## テスト計画
 
-### E2E (Maestro)
-
-- [ ]
-
-### Manual Verification
+### ユニットテスト
 
 - [ ]
 
-## Risks
+### E2E テスト（Maestro）
 
-<!-- What could go wrong? What's the rollback plan? -->
+- [ ]
+
+### 手動確認
+
+- [ ]
+
+## リスク
+
+<!-- 何がうまくいかない可能性があるか？ロールバック（元に戻す）計画は？ -->

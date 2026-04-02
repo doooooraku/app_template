@@ -1,66 +1,66 @@
-# Store Screenshot Generation
+# ストアスクリーンショット生成
 
-## Overview
+## 概要
 
-The screenshot pipeline generates store-ready composite images for Apple App Store and Google Play from raw Maestro captures.
+スクリーンショットパイプライン（Screenshot Pipeline）は、Maestro で撮影した生のスクリーンショットから、Apple App Store と Google Play 向けの合成画像（Composite）を生成します。
 
-## Pipeline Phases
+## パイプラインの各フェーズ
 
-### Phase 0: Marketing Text Generation
+### Phase 0: マーケティングテキスト生成
 
-Use Claude Code to generate localized marketing copy:
+Claude Code を使って、各言語のマーケティング文言を作成します。
 
-1. Create `scripts/store-screenshots/screenshot-config.ts` from the template
-2. Ask Claude Code to generate `data/marketing-text.ts`
+1. テンプレートから `scripts/store-screenshots/screenshot-config.ts` を作成する
+2. Claude Code に `data/marketing-text.ts` の生成を依頼する
 
-### Phase 1: Raw Screenshot Capture
+### Phase 1: 生スクリーンショットの撮影
 
-Use Maestro to capture raw screenshots in each locale:
+Maestro を使って、各ロケール（言語設定）の生スクリーンショットを撮影します。
 
 ```bash
-# Run Maestro flows that capture screenshots
+# Maestro フローを実行してスクリーンショットを撮影する
 maestro test maestro/flows/screenshots.yml
 ```
 
-Screenshots are saved to `screenshots/raw/<locale_dir>/`.
+スクリーンショットは `screenshots/raw/<locale_dir>/` に保存されます。
 
-### Phase 2: Composite Generation
+### Phase 2: 合成画像の生成
 
 ```bash
-# All locales, both stores
+# 全ロケール・両ストア向けに生成
 npx tsx scripts/store-screenshots/generate.ts
 
-# Apple only
+# Apple のみ
 npx tsx scripts/store-screenshots/generate.ts --store apple
 
-# Specific locale
+# 特定のロケールのみ
 npx tsx scripts/store-screenshots/generate.ts --lang ja
 ```
 
-## Setup
+## セットアップ
 
 ```bash
-# 1. Install required tools
+# 1. 必要なツールをインストール
 pnpm add -D playwright sharp tsx
 npx playwright install chromium
 
-# 2. Create config from template
+# 2. テンプレートから設定ファイルを作成
 cp scripts/store-screenshots/screenshot-config.ts.template \
    scripts/store-screenshots/screenshot-config.ts
 
-# 3. Edit the config with your app's marketing text and screen definitions
+# 3. アプリのマーケティングテキストと画面定義を設定ファイルに記入する
 ```
 
-## Store Requirements
+## ストアの要件
 
-| Store           | Phone            | Tablet            |
+| ストア          | スマートフォン   | タブレット        |
 | --------------- | ---------------- | ----------------- |
 | Apple App Store | 1290x2796 (6.7") | 2048x2732 (12.9") |
 | Google Play     | 1290x2796        | 2048x2732         |
 
-## Tips
+## ヒント
 
-- Run Phase 1 on a real device for the most accurate screenshots
-- Keep marketing text short (2-3 words per line work best)
-- Test with one locale first before generating all 19
-- Screenshots are output to `screenshots/store/` (gitignored)
+- Phase 1 は実機で実行すると、もっとも正確なスクリーンショットが撮れます
+- マーケティングテキストは短めに（1 行あたり 2〜3 語がベスト）
+- 19 ロケール全部を生成する前に、まず 1 ロケールでテストしましょう
+- スクリーンショットは `screenshots/store/` に出力されます（gitignore 対象）

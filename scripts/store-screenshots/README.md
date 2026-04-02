@@ -1,61 +1,61 @@
-# Store Screenshot Pipeline
+# ストアスクリーンショットパイプライン（Store Screenshot Pipeline）
 
-Generates store-ready composite screenshots for Apple App Store and Google Play.
+Apple App Store と Google Play 向けの、ストア掲載用の合成スクリーンショットを生成する。
 
-Each composite image consists of a white background, a marketing text caption at the top, and the app screenshot with rounded corners and a subtle shadow below.
+それぞれの合成画像は、白い背景の上にマーケティングテキストのキャプション、その下に角丸と薄い影のついたアプリのスクリーンショットで構成される。
 
-## Pipeline Overview
+## パイプラインの概要
 
-### Phase 0 -- Marketing Text Generation
+### Phase 0 -- マーケティングテキストの生成
 
-Claude Code reads `screenshot-config.ts` and generates `data/marketing-text.ts` containing localized marketing copy for each screen and locale.
+Claude Code が `screenshot-config.ts` を読み込み、各画面・各ロケールのマーケティング文言を含む `data/marketing-text.ts` を生成する。
 
-**Input:** `screenshot-config.ts` (app info, persona, screen definitions, text guidelines)
-**Output:** `data/marketing-text.ts`
+**入力:** `screenshot-config.ts`（アプリ情報、ペルソナ、画面の定義、テキストのガイドライン）
+**出力:** `data/marketing-text.ts`
 
-### Phase 1 -- Raw Screenshot Capture
+### Phase 1 -- 生スクリーンショットの撮影
 
-Maestro captures raw screenshots from the running app for each locale. Screenshots are saved to `screenshots/raw/<locale_dir>/`.
+Maestro が動作中のアプリから各ロケールの生スクリーンショットを撮影する。スクリーンショットは `screenshots/raw/<locale_dir>/` に保存される。
 
-**Input:** Maestro flow files
-**Output:** `screenshots/raw/<locale_dir>/<screen_id>.png`
+**入力:** Maestro フローファイル
+**出力:** `screenshots/raw/<locale_dir>/<screen_id>.png`
 
-### Phase 2 -- Composite Generation
+### Phase 2 -- 合成画像の生成
 
-The `generate.ts` script composes the final store images:
+`generate.ts` スクリプトが最終的なストア画像を合成する:
 
-1. **Compose** -- Builds an HTML page with marketing text + cropped screenshot
-2. **Render** -- Playwright renders the HTML at the exact store dimensions
-3. **Postprocess** -- Sharp flattens alpha, embeds sRGB ICC, and verifies dimensions
+1. **合成（Compose）** -- マーケティングテキストとトリミングしたスクリーンショットを含む HTML ページを作成する
+2. **レンダリング（Render）** -- Playwright がストアの正確なサイズで HTML をレンダリングする
+3. **後処理（Postprocess）** -- Sharp がアルファを平坦化し、sRGB ICC を埋め込み、サイズを検証する
 
-**Input:** Raw screenshots + marketing text
-**Output:** `screenshots/store/<store>/<locale_dir>/<screen_id>.png`
+**入力:** 生スクリーンショット + マーケティングテキスト
+**出力:** `screenshots/store/<store>/<locale_dir>/<screen_id>.png`
 
-## Setup
+## セットアップ
 
-### 1. Install dependencies
+### 1. 依存パッケージのインストール
 
 ```bash
 pnpm add -D playwright sharp tsx
 npx playwright install chromium
 ```
 
-### 2. Create screenshot-config.ts
+### 2. screenshot-config.ts の作成
 
 ```bash
 cp scripts/store-screenshots/screenshot-config.ts.template \
    scripts/store-screenshots/screenshot-config.ts
 ```
 
-Edit the file and fill in all TODO sections with your app-specific values.
+ファイルを編集して、すべての TODO セクションにアプリ固有の値を入力する。
 
-### 3. Generate marketing text (Phase 0)
+### 3. マーケティングテキストの生成（Phase 0）
 
-Ask Claude Code to read `screenshot-config.ts` and generate `data/marketing-text.ts`.
+Claude Code に `screenshot-config.ts` を読み込ませて `data/marketing-text.ts` を生成させる。
 
-### 4. Add pnpm script
+### 4. pnpm スクリプトの追加
 
-Add to `package.json`:
+`package.json` に以下を追加する:
 
 ```json
 {
@@ -65,52 +65,52 @@ Add to `package.json`:
 }
 ```
 
-## Usage
+## 使い方
 
 ```bash
-# Generate for all locales, both stores
+# 全ロケール・両ストア向けに生成
 pnpm store-screenshots
 
-# Apple App Store only
+# Apple App Store のみ
 pnpm store-screenshots --store apple
 
-# Google Play, Japanese only
+# Google Play、日本語のみ
 pnpm store-screenshots --store google --lang ja
 
-# Multiple locales
+# 複数ロケール
 pnpm store-screenshots --lang en,ja,fr
 ```
 
-## Output Sizes
+## 出力サイズ
 
-| Store  | Dimensions  | Notes                                    |
-| ------ | ----------- | ---------------------------------------- |
-| Apple  | 1320 x 2868 | iPhone 6.9" -- mandatory for App Store   |
-| Google | 1080 x 1920 | Phone -- standard for Google Play (9:16) |
+| ストア | サイズ      | 備考                                      |
+| ------ | ----------- | ----------------------------------------- |
+| Apple  | 1320 x 2868 | iPhone 6.9" -- App Store で必須           |
+| Google | 1080 x 1920 | スマートフォン -- Google Play 標準 (9:16) |
 
-## Directory Structure
+## ディレクトリ構成
 
 ```
 scripts/store-screenshots/
-  generate.ts                    # CLI entry point
-  screenshot-config.ts           # App-specific config (create from .template)
-  screenshot-config.ts.template  # Template with TODOs
+  generate.ts                    # CLI エントリーポイント
+  screenshot-config.ts           # アプリ固有の設定（.template から作成）
+  screenshot-config.ts.template  # TODO 付きのテンプレート
   data/
-    marketing-text.ts            # Generated marketing copy
+    marketing-text.ts            # 生成されたマーケティング文言
   lib/
-    config.ts                    # Size constants and path resolution
-    fonts.ts                     # Font management (@font-face generation)
-    renderer.ts                  # Playwright rendering
-    template.ts                  # HTML template generation
-    postprocess.ts               # Sharp crop/flatten/verify
+    config.ts                    # サイズ定数とパス解決
+    fonts.ts                     # フォント管理（@font-face の生成）
+    renderer.ts                  # Playwright レンダリング
+    template.ts                  # HTML テンプレート生成
+    postprocess.ts               # Sharp によるトリミング / 平坦化 / 検証
 
 screenshots/
-  raw/<locale_dir>/              # Maestro captures (Phase 1 input)
-  store/<store>/<locale_dir>/    # Final composites (Phase 2 output)
+  raw/<locale_dir>/              # Maestro の撮影結果（Phase 1 の入力）
+  store/<store>/<locale_dir>/    # 最終合成画像（Phase 2 の出力）
 ```
 
-## Fonts
+## フォント
 
-By default, the pipeline uses Noto Sans variable fonts from `assets/fonts/`. The font module (`lib/fonts.ts`) automatically selects the correct font for each locale (e.g. Noto Sans JP for Japanese, Noto Sans SC for Simplified Chinese).
+デフォルトでは、パイプラインは `assets/fonts/` にある Noto Sans 可変フォントを使用する。フォントモジュール（`lib/fonts.ts`）が各ロケールに合ったフォントを自動的に選択する（例: 日本語には Noto Sans JP、簡体字中国語には Noto Sans SC）。
 
-If your app uses different fonts, edit the `FONTS` map in `lib/fonts.ts`.
+アプリで別のフォントを使う場合は、`lib/fonts.ts` の `FONTS` マップを編集する。

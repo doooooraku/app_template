@@ -1,32 +1,32 @@
-# Sentry Setup Guide
+# Sentry セットアップガイド
 
-## Overview
+## 概要
 
-[Sentry](https://sentry.io/) provides real-time crash reporting and error monitoring.
-Free tier: 5,000 errors/month (sufficient for early-stage apps).
+[Sentry](https://sentry.io/) は、リアルタイムでクラッシュレポートやエラー監視を行うサービスです。
+無料プランでは月 5,000 エラーまで対応でき、初期段階のアプリには十分です。
 
-## Prerequisites
+## 必要なもの
 
-- Sentry account + project created at https://sentry.io
-- Sentry DSN (found in Project Settings > Client Keys)
+- Sentry のアカウントと、https://sentry.io で作成したプロジェクト
+- Sentry DSN（Project Settings > Client Keys から確認できます）
 
-## Installation
+## インストール
 
 ```bash
 pnpm add @sentry/react-native
 ```
 
-## Configuration
+## 設定
 
-### 1. Add DSN to `.env`
+### 1. `.env` に DSN を追加する
 
 ```env
 SENTRY_DSN=https://examplePublicKey@o0.ingest.sentry.io/0
 ```
 
-### 2. Add to `app.config.ts`
+### 2. `app.config.ts` に追加する
 
-In the `plugins` array:
+`plugins` 配列に以下を追加します:
 
 ```ts
 [
@@ -38,15 +38,15 @@ In the `plugins` array:
 ],
 ```
 
-In the `extra` section:
+`extra` セクションに以下を追加します:
 
 ```ts
 sentryDsn: process.env.SENTRY_DSN ?? '',
 ```
 
-### 3. Initialize in app entry
+### 3. アプリのエントリポイントで初期化する
 
-In `app/_layout.tsx`:
+`app/_layout.tsx` に以下を追加します:
 
 ```ts
 import * as Sentry from '@sentry/react-native';
@@ -58,9 +58,9 @@ Sentry.init({
 });
 ```
 
-### 4. EAS Build source maps
+### 4. EAS ビルドでソースマップ（Source Map）を設定する
 
-Add to `eas.json` build profiles:
+`eas.json` のビルドプロファイルに以下を追加します:
 
 ```json
 "production": {
@@ -70,15 +70,15 @@ Add to `eas.json` build profiles:
 }
 ```
 
-## Verification
+## 動作確認
 
-1. Build a preview APK
-2. Trigger an error (e.g., `throw new Error('Sentry test')`)
-3. Check Sentry dashboard for the error event
-4. Verify source maps are correctly symbolicated
+1. プレビュー APK をビルドする
+2. エラーを発生させる（例: `throw new Error('Sentry test')`）
+3. Sentry のダッシュボードでエラーイベントが表示されるか確認する
+4. ソースマップが正しく適用されているか確認する
 
-## Notes
+## 注意点
 
-- Sentry is disabled in `__DEV__` mode to avoid noise during development
-- For production, store `SENTRY_AUTH_TOKEN` as an EAS Secret, not in `.env`
-- Consider adding an Error Boundary component for graceful crash UI
+- 開発中のノイズを避けるため、`__DEV__` モードでは Sentry は無効になります
+- 本番環境では `SENTRY_AUTH_TOKEN` を `.env` ではなく EAS Secret として保存してください
+- クラッシュ時にわかりやすい画面を表示するために、エラーバウンダリ（Error Boundary）コンポーネントの追加を検討してください

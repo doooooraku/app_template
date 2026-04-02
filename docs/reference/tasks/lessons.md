@@ -1,65 +1,65 @@
-# Lessons Learned
+# 学んだこと（Lessons Learned）
 
-Record patterns and corrections here so the same mistakes are not repeated.
+同じミスを繰り返さないように、パターンや修正内容をここに記録する。
 
-## Format
+## フォーマット
 
 ```
-### [Date] Category: Short title
-- What happened:
-- Root cause:
-- Rule: (what to do differently next time)
+### [日付] カテゴリ: 短いタイトル
+- 何が起きたか:
+- 根本原因:
+- ルール: (次回どうすべきか)
 ```
 
 ---
 
-## Seed Lessons (from prior projects)
+## 初期レッスン（過去のプロジェクトから）
 
-### Document Management
+### ドキュメント管理
 
-#### Doc map update on new file
+#### 新しいファイルを追加したらドキュメントマップを更新する
 
-- **Rule:** When adding a new document, always update the docs/README.md file map.
-- **Root cause:** No checklist for "other files affected" when creating docs.
+- **ルール:** 新しいドキュメントを追加したら、必ず docs/README.md のファイルマップを更新する。
+- **根本原因:** ドキュメント作成時に「他に影響するファイル」を確認するチェックリストがなかった。
 
-#### Feature inventory before replacement
+#### 機能を置き換える前に既存機能を一覧にする
 
-- **Rule:** When replacing an existing feature with a new version, inventory all capabilities of the old version first. Distinguish intentional removals from oversights.
-- **Root cause:** Old feature's capabilities were not documented externally, so they were missed during redesign.
+- **ルール:** 既存の機能を新しいバージョンに置き換えるときは、まず古いバージョンの全機能を一覧にする。意図的に削除したものと見落としを区別する。
+- **根本原因:** 古い機能の能力が外部にドキュメント化されていなかったため、再設計時に見落とされた。
 
-#### Legacy reference update
+#### 古い参照の更新
 
-- **Rule:** Definition of Done must include "cross-reference check for related documents."
-- **Root cause:** New feature TODO did not include checking existing docs for stale references.
-
----
-
-### DB / Data
-
-#### Migration idempotency
-
-- **Rule:** `PRAGMA user_version` must be set unconditionally (not inside an if-block). `ALTER TABLE ADD COLUMN` must check column existence first.
-- **Root cause:** `CREATE TABLE IF NOT EXISTS` is idempotent, but `ALTER TABLE ADD COLUMN` is not. On app restart, version=0 triggers re-migration and "duplicate column" error.
-
-#### Backup/export field coverage
-
-- **Rule:** When adding a column to `reports` or `photos`, always update the corresponding Backup type, export mapping, and import INSERT in backupService.
-- **Root cause:** No process to check backup impact when schema changes.
+- **ルール:** 完了の定義（Definition of Done）に「関連ドキュメントのクロスリファレンスチェック」を含める。
+- **根本原因:** 新機能の TODO に、既存ドキュメントの古い参照を確認する項目がなかった。
 
 ---
 
-### i18n
+### DB / データ
 
-#### Don't rely on baseEn fallback
+#### マイグレーションの冪等性（べきとうせい）
 
-- **Rule:** New translation keys must be explicitly overridden in all locale files. `...baseEn` spread makes keys "exist" but they remain untranslated.
-- **Root cause:** The i18n:check script validates en.ts keys vs code usage, but doesn't detect locale files that silently inherit English via spread.
+- **ルール:** `PRAGMA user_version` は無条件でセットする（if ブロックの中に入れない）。`ALTER TABLE ADD COLUMN` はカラムの存在を先にチェックする。
+- **根本原因:** `CREATE TABLE IF NOT EXISTS` は冪等だが、`ALTER TABLE ADD COLUMN` は冪等ではない。アプリ再起動時に version=0 となり、再マイグレーションが走って「カラムが重複しています」エラーになる。
+
+#### バックアップ / エクスポートのフィールドカバレッジ
+
+- **ルール:** `reports` や `photos` にカラムを追加したら、必ず対応する Backup 型、エクスポートマッピング、backupService のインポート INSERT を更新する。
+- **根本原因:** スキーマ変更時にバックアップへの影響を確認するプロセスがなかった。
 
 ---
 
-### UX / Copy
+### i18n（多言語対応）
 
-#### No technical jargon in user-facing text
+#### baseEn のフォールバックに頼らない
 
-- **Rule:** Never show filenames, directory names, JSON, schema, or other internal terms to users. Describe what something does, not what it is technically.
-- **Root cause:** Developer described backup contents accurately (`manifest.json + photos/`) instead of describing their purpose.
+- **ルール:** 新しい翻訳キーは、すべてのロケールファイルで明示的にオーバーライドする。`...baseEn` のスプレッドを使うとキーは「存在する」が、翻訳されないまま英語が残る。
+- **根本原因:** i18n:check スクリプトは en.ts のキーとコードの使用箇所を照合するが、スプレッドで英語をそのまま引き継いでいるロケールファイルは検出できない。
+
+---
+
+### UX / 文言
+
+#### ユーザー向けテキストに専門用語を使わない
+
+- **ルール:** ファイル名、ディレクトリ名、JSON、スキーマなどの内部用語をユーザーに見せない。技術的に「何であるか」ではなく、「何をするか」を説明する。
+- **根本原因:** 開発者がバックアップの中身を正確に記述した（`manifest.json + photos/`）が、その目的を説明すべきだった。

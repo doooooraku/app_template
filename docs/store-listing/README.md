@@ -1,45 +1,45 @@
-# Store Listing Assets
+# ストア掲載アセット
 
-Localized store listing content for Apple App Store and Google Play.
+Apple App Store と Google Play 向けの、ローカライズされたストア掲載コンテンツです。
 
-## Structure
+## ディレクトリ構成
 
 ```
 store-listing/
   android/
     <locale>/
-      title.txt              # App title (max 30 chars)
-      short-description.txt  # Short description (max 80 chars)
-      full-description.txt   # Full description (max 4000 chars)
+      title.txt              # アプリタイトル（最大 30 文字）
+      short-description.txt  # 短い説明（最大 80 文字）
+      full-description.txt   # 詳しい説明（最大 4000 文字）
   ios/
     <locale>/
-      description.txt        # App Store description
+      description.txt        # App Store の説明
 ```
 
-## Supported Locales (19)
+## 対応ロケール（19 言語）
 
-| Code   | Language              | Android Dir | iOS Dir |
-| ------ | --------------------- | ----------- | ------- |
-| en     | English               | en-US       | en-US   |
-| ja     | Japanese              | ja-JP       | ja      |
-| fr     | French                | fr-FR       | fr-FR   |
-| es     | Spanish               | es-ES       | es-ES   |
-| de     | German                | de-DE       | de-DE   |
-| it     | Italian               | it-IT       | it      |
-| pt     | Portuguese            | pt-BR       | pt-BR   |
-| ru     | Russian               | ru-RU       | ru      |
-| zhHans | Chinese (Simplified)  | zh-Hans     | zh-Hans |
-| zhHant | Chinese (Traditional) | zh-Hant     | zh-Hant |
-| ko     | Korean                | ko-KR       | ko      |
-| hi     | Hindi                 | hi-IN       | hi      |
-| id     | Indonesian            | id          | id      |
-| th     | Thai                  | th          | th      |
-| vi     | Vietnamese            | vi          | vi      |
-| tr     | Turkish               | tr-TR       | tr      |
-| nl     | Dutch                 | nl-NL       | nl      |
-| pl     | Polish                | pl-PL       | pl      |
-| sv     | Swedish               | sv-SE       | sv      |
+| コード | 言語             | Android ディレクトリ | iOS ディレクトリ |
+| ------ | ---------------- | -------------------- | ---------------- |
+| en     | 英語             | en-US                | en-US            |
+| ja     | 日本語           | ja-JP                | ja               |
+| fr     | フランス語       | fr-FR                | fr-FR            |
+| es     | スペイン語       | es-ES                | es-ES            |
+| de     | ドイツ語         | de-DE                | de-DE            |
+| it     | イタリア語       | it-IT                | it               |
+| pt     | ポルトガル語     | pt-BR                | pt-BR            |
+| ru     | ロシア語         | ru-RU                | ru               |
+| zhHans | 中国語（簡体字） | zh-Hans              | zh-Hans          |
+| zhHant | 中国語（繁体字） | zh-Hant              | zh-Hant          |
+| ko     | 韓国語           | ko-KR                | ko               |
+| hi     | ヒンディー語     | hi-IN                | hi               |
+| id     | インドネシア語   | id                   | id               |
+| th     | タイ語           | th                   | th               |
+| vi     | ベトナム語       | vi                   | vi               |
+| tr     | トルコ語         | tr-TR                | tr               |
+| nl     | オランダ語       | nl-NL                | nl               |
+| pl     | ポーランド語     | pl-PL                | pl               |
+| sv     | スウェーデン語   | sv-SE                | sv               |
 
-## Workflow
+## ワークフロー
 
-See [Store Listing Guide](../how-to/store-listing-guide.md) for the full process.
+詳しい手順は[ストア掲載ガイド](../how-to/store-listing-guide.md)を参照してください。
