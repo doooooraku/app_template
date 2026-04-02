@@ -34,7 +34,7 @@ const ANDROID_PACKAGE = required('ANDROID_PACKAGE');
 // ---------------------------------------------------------------------------
 
 const EAS_PROJECT_ID = optional('EAS_PROJECT_ID');
-const EAS_OWNER = optional('EAS_OWNER', 'doooooraku');
+const EAS_OWNER = optional('EAS_OWNER');
 
 // ---------------------------------------------------------------------------
 // AdMob (fallback to Google test IDs for development)
