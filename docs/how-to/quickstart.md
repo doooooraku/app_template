@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Node.js >= 20 (recommend using nvm)
+- Node.js >= 22 (recommend using nvm)
 - pnpm (`npm install -g pnpm`)
 - Android Studio (for Android development)
 - Xcode (for iOS development, macOS only)

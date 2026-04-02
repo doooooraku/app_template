@@ -88,9 +88,9 @@ pnpm test:e2e
 - Maestro が `maestro/flows/smoke.yml` を実行
 - アプリを起動して、最低限の操作ができるかを確認する（スモークテスト）
 
-### 3.1.1 まず最初に直すべきこと（重要）
+### 3.1.1 セットアップ後の確認
 
-- `maestro/flows/smoke.yml` の `appId: "CHANGE_ME_APP_ID"` を **実アプリのID**に書き換える
+- `maestro/flows/smoke.yml` の `appId` は `setup.sh` 実行時に自動で置換されます
 - E2Eで使う `testID` が実装側にあるか確認する（無ければ追加）
 
 ### 3.2 ここが注意（詰まりやすい）

@@ -1,7 +1,7 @@
 # maestro/flows/smoke.yml
 # App Factory 共通スモークテスト
 
-appId: 'CHANGE_ME_APP_ID' # ★各アプリの Application ID / Bundle ID に書き換える
+appId: '{{ANDROID_PACKAGE}}' # setup.sh で自動置換される
 name: 'Smoke - main flow' # テスト名（レポートでの表示名）
 tags:
   - smoke # 簡易テストであることを示すタグ
