@@ -1,54 +1,53 @@
 #!/usr/bin/env bash
-# setup.sh — Initialize this template for a new app
+# setup.sh — テンプレートを新しいアプリ用に初期化するスクリプト
 #
-# Usage: bash setup.sh
+# 使い方: bash setup.sh
 #
-# This script replaces all {{PLACEHOLDER}} values in the codebase with
-# your app-specific values, then cleans up the template scaffolding.
+# このスクリプトは、コードベース内の {{PLACEHOLDER}} を
+# あなたのアプリ固有の値に置き換え、テンプレートの雛形を整理します。
 
 set -euo pipefail
 
 echo "========================================"
-echo "  App Factory Template Setup"
+echo "  App Factory テンプレート セットアップ"
 echo "========================================"
 echo ""
 
-# --- Collect input ---
-read -rp "App display name (e.g. MyApp): " APP_NAME
-read -rp "App slug (URL-safe, e.g. myapp): " APP_SLUG
-read -rp "Android package (e.g. com.yourcompany.myapp): " ANDROID_PACKAGE
-read -rp "iOS bundle identifier (e.g. com.yourcompany.myapp): " IOS_BUNDLE_IDENTIFIER
-read -rp "Deep link scheme (e.g. myapp): " APP_SCHEME
-read -rp "One-line description: " DESCRIPTION
-read -rp "EAS project ID (leave empty to skip): " EAS_PROJECT_ID
+# --- 入力を収集 ---
+read -rp "アプリ表示名（例: MyApp）: " APP_NAME
+read -rp "アプリスラッグ（URL用、例: myapp）: " APP_SLUG
+read -rp "Android パッケージ名（例: com.yourcompany.myapp）: " ANDROID_PACKAGE
+read -rp "iOS バンドルID（例: com.yourcompany.myapp）: " IOS_BUNDLE_IDENTIFIER
+read -rp "ディープリンクスキーム（例: myapp）: " APP_SCHEME
+read -rp "アプリの一行説明: " DESCRIPTION
+read -rp "EAS プロジェクトID（不明な場合は空欄でOK）: " EAS_PROJECT_ID
 
 echo ""
-echo "--- Confirming ---"
+echo "--- 入力内容の確認 ---"
 echo "  APP_NAME:               $APP_NAME"
 echo "  APP_SLUG:               $APP_SLUG"
 echo "  ANDROID_PACKAGE:        $ANDROID_PACKAGE"
 echo "  IOS_BUNDLE_IDENTIFIER:  $IOS_BUNDLE_IDENTIFIER"
 echo "  APP_SCHEME:             $APP_SCHEME"
 echo "  DESCRIPTION:            $DESCRIPTION"
-echo "  EAS_PROJECT_ID:         ${EAS_PROJECT_ID:-"(skipped)"}"
+echo "  EAS_PROJECT_ID:         ${EAS_PROJECT_ID:-"（スキップ）"}"
 echo ""
-read -rp "Proceed? (y/N): " CONFIRM
+read -rp "この内容で進めますか？ (y/N): " CONFIRM
 if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
-  echo "Aborted."
+  echo "中断しました。"
   exit 1
 fi
 
 echo ""
-echo "=== Replacing placeholders ==="
+echo "=== プレースホルダーを置換中 ==="
 
-# --- Replace in source files ---
-# Using find + sed for cross-platform compatibility
+# --- ソースファイル内のプレースホルダーを置換 ---
 replace_placeholder() {
   local placeholder="$1"
   local value="$2"
-  echo "  Replacing $placeholder → $value"
+  echo "  $placeholder → $value"
 
-  # Escape special characters for sed
+  # sed用に特殊文字をエスケープ
   local escaped_value
   escaped_value=$(printf '%s\n' "$value" | sed -e 's/[\/&]/\\&/g')
 
@@ -75,21 +74,21 @@ if [[ -n "$EAS_PROJECT_ID" ]]; then
   replace_placeholder "{{EAS_PROJECT_ID}}" "$EAS_PROJECT_ID"
 fi
 
-# --- Update .env.example ---
+# --- .env.example を更新 ---
 echo ""
-echo "=== Updating .env.example ==="
+echo "=== .env.example を更新中 ==="
 sed -i "s/^APP_NAME=.*/APP_NAME=$APP_NAME/" .env.example
 sed -i "s/^APP_SLUG=.*/APP_SLUG=$APP_SLUG/" .env.example
 sed -i "s/^ANDROID_PACKAGE=.*/ANDROID_PACKAGE=$ANDROID_PACKAGE/" .env.example
 sed -i "s/^IOS_BUNDLE_IDENTIFIER=.*/IOS_BUNDLE_IDENTIFIER=$IOS_BUNDLE_IDENTIFIER/" .env.example
 
-# --- Copy .env.example to .env ---
+# --- .env.example から .env をコピー ---
 cp .env.example .env
-echo "  Created .env from .env.example"
+echo "  .env.example から .env を作成しました"
 
-# --- Update app.json ---
+# --- app.json を更新 ---
 echo ""
-echo "=== Updating app.json ==="
+echo "=== app.json を更新中 ==="
 node -e "
   const fs = require('fs');
   const json = JSON.parse(fs.readFileSync('app.json', 'utf8'));
@@ -102,41 +101,41 @@ node -e "
   }
   fs.writeFileSync('app.json', JSON.stringify(json, null, 2) + '\n');
 "
-echo "  Updated app.json"
+echo "  app.json を更新しました"
 
-# --- Update package.json name ---
+# --- package.json の name を更新 ---
 echo ""
-echo "=== Updating package.json ==="
+echo "=== package.json を更新中 ==="
 node -e "
   const fs = require('fs');
   const json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
   json.name = '$APP_SLUG';
   fs.writeFileSync('package.json', JSON.stringify(json, null, 2) + '\n');
 "
-echo "  Updated package.json name"
+echo "  package.json の name を更新しました"
 
-# --- Clean up template files ---
+# --- テンプレートファイルの整理 ---
 echo ""
-echo "=== Cleaning up template scaffolding ==="
+echo "=== テンプレートファイルを整理中 ==="
 rm -f TEMPLATE_README.md
-echo "  Removed TEMPLATE_README.md"
+echo "  TEMPLATE_README.md を削除しました"
 
-# --- Install dependencies ---
+# --- 依存関係のインストール ---
 echo ""
-echo "=== Installing dependencies ==="
+echo "=== 依存関係をインストール中 ==="
 pnpm install
 
-# --- Verify ---
+# --- 検証 ---
 echo ""
-echo "=== Running verification ==="
-pnpm verify || echo "WARN: verify had issues — check output above"
+echo "=== 検証を実行中 ==="
+pnpm verify || echo "警告: 検証で問題がありました — 上の出力を確認してください"
 
 echo ""
 echo "========================================"
-echo "  Setup complete!"
+echo "  セットアップ完了！"
 echo ""
-echo "  Next steps:"
-echo "    1. Review .env and fill in API keys"
-echo "    2. Run: pnpm dev"
-echo "    3. Read TEMPLATE_README.md (if kept) for more info"
+echo "  次のステップ:"
+echo "    1. .env を確認してAPIキーを設定する"
+echo "    2. pnpm dev で開発を開始する"
+echo "    3. docs/ 内のドキュメントを参照してカスタマイズする"
 echo "========================================"

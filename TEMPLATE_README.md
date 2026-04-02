@@ -9,7 +9,7 @@ A batteries-included Expo template for building production-ready mobile apps.
 | **Framework**    | Expo SDK 55, React Native 0.83.4, Expo Router v55             |
 | **UI**           | Tamagui v1, Reanimated, Gesture Handler                       |
 | **State**        | Zustand + AsyncStorage persist                                |
-| **Data**         | expo-sqlite with migration pattern, Supabase client           |
+| **Data**         | expo-sqlite with migration pattern                            |
 | **i18n**         | 19 languages, auto-detection, Zustand-based                   |
 | **Monetization** | RevenueCat (IAP), AdMob (ads), UMP consent                    |
 | **CI/CD**        | GitHub Actions (verify, Maestro smoke, Dependabot)            |

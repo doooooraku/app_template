@@ -22,7 +22,7 @@ pnpm dev
 | **Framework**    | Expo 55, React Native 0.83.4, New Architecture            |
 | **UI**           | Tamagui v1, React Navigation                              |
 | **State**        | Zustand + persist, React Query                            |
-| **Data**         | expo-sqlite with migration pattern, Supabase client       |
+| **Data**         | expo-sqlite with migration pattern                        |
 | **i18n**         | 19 languages (expo-localization + custom system)          |
 | **Monetization** | RevenueCat (subscriptions), AdMob + UMP (ads)             |
 | **CI/CD**        | GitHub Actions (verify, Maestro smoke, Dependabot)        |
