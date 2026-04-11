@@ -145,6 +145,7 @@ Codex uses **"doing" skills**: `/implement`, `/fix-ci`, `/i18n-add`.
 - `/progress` — 3-axis audit
 - `/store-text` — generate store listing text
 - `/release-check` — pre-release final check
+- `/session-end` — end-of-session handoff (audit tasks, save memory, propose commit+push)
 
 ### Third-party auto-triggered skills (no explicit call needed)
 

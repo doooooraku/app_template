@@ -84,11 +84,11 @@ cd リポジトリ名
 
 > **重要**: Claude Code v2.1+ は **プロジェクト直下の `.claude/skills/` を認識しません**。Skills は **ユーザーレベル `~/.claude/skills/`** に配置する必要があります。
 
-このテンプレートには **10 個の Claude Code Skills + 3 個の Codex Skills** が同梱されています。最初に 1 回だけ **ユーザー領域にコピー**してください（2 回目以降の新アプリ作成時はスキップ可）。
+このテンプレートには **11 個の Claude Code Skills + 3 個の Codex Skills** が同梱されています。最初に 1 回だけ **ユーザー領域にコピー**してください（2 回目以降の新アプリ作成時はスキップ可）。
 
 **内訳**:
 
-- **自作 (7)**: `/discuss` `/plan` `/review-pr` `/retro` `/progress` `/store-text` `/release-check` — W-flow 用
+- **自作 (8)**: `/discuss` `/plan` `/review-pr` `/retro` `/progress` `/store-text` `/release-check` `/session-end` — W-flow + セッション終了用
 - **Anthropic 公式 (1)**: `skill-creator` — 新しい Skill を対話形式で作成 ([anthropics/skills](https://github.com/anthropics/skills))
 - **Callstack 公式 (2)**: `react-native-best-practices` `upgrading-react-native` — RN パフォーマンス/アップグレード ([callstackincubator/agent-skills](https://github.com/callstackincubator/agent-skills), MIT)
 
@@ -105,7 +105,7 @@ cp -r .codex/skills/* ~/.codex/skills/
 
 ### インストール確認
 
-新しい Claude Code セッションを起動して `/skills` を実行すると、10 個の Claude Code Skills が表示されます。
+新しい Claude Code セッションを起動して `/skills` を実行すると、11 個の Claude Code Skills が表示されます。
 
 ### 各 Skill の使い方
 
@@ -118,6 +118,7 @@ cp -r .codex/skills/* ~/.codex/skills/
 | `/progress`                   | `/progress`                | 進捗 3 軸確認                                  |
 | `/store-text`                 | `/store-text`              | ストア掲載テキスト生成                         |
 | `/release-check`              | `/release-check`           | リリース前最終チェック                         |
+| `/session-end`                | `/session-end`             | **毎セッション終了時** (memory保存+commit提案) |
 | `skill-creator`               | 自動起動（Skill を作る時） | 新しい独自 Skill を対話形式で作成              |
 | `react-native-best-practices` | 自動起動（RN 最適化時）    | FPS/TTI/バンドルサイズ/メモリ最適化            |
 | `upgrading-react-native`      | 自動起動（RN 更新時）      | Expo SDK/RN バージョンアップ時の diff 適用手順 |
