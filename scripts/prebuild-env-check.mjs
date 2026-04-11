@@ -27,6 +27,21 @@ config({ path: resolve(__dirname, '..', '.env') });
 
 const platform = (process.argv[2] ?? 'all').toLowerCase();
 
+// Escape hatch for the FIRST build (Phase 3.5 smoke test):
+// Before you have RevenueCat API keys, you still need to build a Dev APK to
+// install on a device. Set SKIP_KEYS=1 to bypass this check.
+//
+// Usage:
+//   SKIP_KEYS=1 pnpm build:android:apk:local
+//
+// ⚠ Never use SKIP_KEYS=1 for production builds — the app will ship with
+// empty API keys and IAP/ads will silently fail.
+if (process.env.SKIP_KEYS === '1') {
+  console.log('\x1b[33m⚠ SKIP_KEYS=1 set — bypassing pre-build env check (Phase 3.5 mode)\x1b[0m');
+  console.log('  Do NOT use this for production builds.');
+  process.exit(0);
+}
+
 // TODO: Replace with your app's required environment variable names.
 // These are the keys that MUST be present in the built binary for the app
 // to function correctly (IAP, ads, etc.).

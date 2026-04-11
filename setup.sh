@@ -21,6 +21,7 @@ read -rp "iOS バンドルID（例: com.yourcompany.myapp）: " IOS_BUNDLE_IDENT
 read -rp "ディープリンクスキーム（例: myapp）: " APP_SCHEME
 read -rp "アプリの一行説明: " DESCRIPTION
 read -rp "EAS プロジェクトID（不明な場合は空欄でOK）: " EAS_PROJECT_ID
+read -rp "サンプルコード（チュートリアル画面・hello-wave等）を削除しますか？(y/N): " DELETE_SAMPLES
 
 echo ""
 echo "--- 入力内容の確認 ---"
@@ -119,6 +120,57 @@ echo ""
 echo "=== テンプレートファイルを整理中 ==="
 rm -f TEMPLATE_README.md
 echo "  TEMPLATE_README.md を削除しました"
+
+# --- サンプルコードの削除（オプション） ---
+if [[ "$DELETE_SAMPLES" =~ ^[Yy]$ ]]; then
+  echo ""
+  echo "=== サンプルコードを削除中 ==="
+
+  # チュートリアル画面（Expo標準サンプル）
+  rm -f "app/(tabs)/explore.tsx"
+  rm -f components/hello-wave.tsx
+  rm -f components/parallax-scroll-view.tsx
+  rm -f assets/images/partial-react-logo.png
+  rm -f assets/images/react-logo.png
+  rm -f assets/images/react-logo@2x.png
+  rm -f assets/images/react-logo@3x.png
+
+  # サンプル機能ディレクトリ
+  rm -rf src/features/example
+
+  # index.tsx を最小構成に置換
+  cat > "app/(tabs)/index.tsx" <<'EOF'
+import { StyleSheet, View } from 'react-native';
+
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+
+export default function HomeScreen() {
+  return (
+    <ThemedView style={styles.container}>
+      <ThemedText type="title">{{APP_NAME}}</ThemedText>
+      <ThemedText>ここからアプリを作り始めましょう。</ThemedText>
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+  },
+});
+EOF
+  # 上記の {{APP_NAME}} を実際のアプリ名で置換
+  sed -i "s/{{APP_NAME}}/$APP_NAME/g" "app/(tabs)/index.tsx"
+
+  # _layout.tsx の (tabs) 構成を簡略化（タブが1つだけになるので）
+  echo "  サンプルコードを削除しました"
+  echo "  ⚠ Tabs 構成を残しているので、不要なら app/(tabs)/_layout.tsx を編集してください"
+fi
 
 # --- 依存関係のインストール ---
 echo ""
