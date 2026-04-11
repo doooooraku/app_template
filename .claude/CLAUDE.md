@@ -1,3 +1,34 @@
+## Project
+
+- **{{APP_NAME}}**: {{DESCRIPTION}}
+- **Tech Stack**: Expo SDK 55+, React Native 0.83+, Tamagui, Zustand, expo-sqlite, expo-router (file-based routing)
+- **iOS bundle ID**: {{IOS_BUNDLE_IDENTIFIER}}
+- **Android package**: {{ANDROID_PACKAGE}}
+- **Languages**: 19 (en, ja, fr, es, de, it, pt, ru, zh-Hans, zh-Hant, ko, hi, id, th, vi, tr, nl, pl, sv)
+- **Source of truth**: `package.json` (deps), `docs/reference/constraints.md` (rules), `docs/adr/` (decisions)
+
+## Commands
+
+- `pnpm dev` — start Metro
+- `pnpm verify` — full check (lint + type-check + format + test + i18n + config)
+- `pnpm test` — Jest unit tests
+- `pnpm test:e2e` — Maestro E2E
+- `pnpm build:android:apk:local` — local APK build (requires API keys, or `SKIP_KEYS=1` for first build)
+- `pnpm build:android:aab:local` — local AAB build for production
+- `pnpm i18n:check` — verify all locale keys are present
+- `pnpm metadata:check` — validate `fastlane/metadata/`
+
+## Reference (read when relevant)
+
+- Coding rules: `docs/how-to/coding_rules.md`
+- Git workflow: `docs/how-to/git_workflow.md`
+- Whole workflow (dev → release): `docs/how-to/whole_workflow.md`
+- Architecture decisions: `docs/adr/`
+- Constraints (immutable rules): `docs/reference/constraints.md`
+- Lessons learned: `docs/reference/tasks/lessons.md`
+
+---
+
 ## Workflow
 
 ### 1. Plan Mode First

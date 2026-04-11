@@ -21,7 +21,12 @@ read -rp "iOS バンドルID（例: com.yourcompany.myapp）: " IOS_BUNDLE_IDENT
 read -rp "ディープリンクスキーム（例: myapp）: " APP_SCHEME
 read -rp "アプリの一行説明: " DESCRIPTION
 read -rp "EAS プロジェクトID（不明な場合は空欄でOK）: " EAS_PROJECT_ID
-read -rp "サンプルコード（チュートリアル画面・hello-wave等）を削除しますか？(y/N): " DELETE_SAMPLES
+echo ""
+echo "Expo 標準のチュートリアル画面（HelloWave / Step 1, 2, 3 / explore タブ等）を削除しますか？"
+echo "  Y = 削除する（推奨：自分のアプリを作り始めるなら）"
+echo "  N = 残す（テンプレートの動作確認をしたい場合）"
+read -rp "削除する？(Y/n): " DELETE_SAMPLES
+DELETE_SAMPLES=${DELETE_SAMPLES:-Y}
 
 echo ""
 echo "--- 入力内容の確認 ---"
