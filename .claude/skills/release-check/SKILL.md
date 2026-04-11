@@ -1,6 +1,8 @@
 ---
 name: release-check
-description: Run pre-release final checks (CI, tests, env, ads, billing, store)
+description: Run pre-release final checks (CI, tests, env, ads, billing, store).
+user-invocable: true
+argument-hint: '[--ios / --android / --all (デフォルト: --all)]'
 ---
 
 # /release-check — リリース前最終チェック

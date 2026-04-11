@@ -1,6 +1,8 @@
 ---
 name: review-pr
 description: W-10.5 PR review — verify AC compliance, ADR alignment, impact scope, regression risk before merge.
+user-invocable: true
+argument-hint: '[#PR番号]'
 ---
 
 # /review-pr — PR レビュー（W-10.5）

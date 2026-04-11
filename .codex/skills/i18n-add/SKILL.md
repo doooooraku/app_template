@@ -1,6 +1,8 @@
 ---
 name: i18n-add
-description: Add a new translation key to all 19 locale files
+description: Add a new translation key to all 19 locale files.
+user-invocable: true
+argument-hint: "["key.name" "English value"]"
 ---
 
 # /i18n-add — 翻訳キー追加

@@ -1,6 +1,8 @@
 ---
 name: discuss
 description: Multi-expert team discussion mode — no code changes, just analysis. Primary-source research, bias removal, simulation, hypothesis-driven.
+user-invocable: true
+argument-hint: '[議題] 議論したいテーマ or 検討事項'
 ---
 
 # /discuss — 議論モード

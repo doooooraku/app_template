@@ -1,6 +1,8 @@
 ---
 name: retro
 description: Retrospective — KPT + timeline + bottleneck analysis + lessons + next-app handoff.
+user-invocable: true
+argument-hint: '[対象期間 or マイルストーン or 機能名]'
 ---
 
 # /retro — 振り返り

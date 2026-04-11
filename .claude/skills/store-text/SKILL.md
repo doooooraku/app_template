@@ -1,6 +1,8 @@
 ---
 name: store-text
-description: Generate App Store and Google Play listing text (title, description, keywords)
+description: Generate App Store and Google Play listing text (title, description, keywords).
+user-invocable: true
+argument-hint: '[対象言語 or --all (デフォルト: ja + en)]'
 ---
 
 # /store-text — ストア掲載テキスト生成

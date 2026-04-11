@@ -1,6 +1,8 @@
 ---
 name: implement
-description: W-06〜W-10 execution for Codex — read Issue's Context for Codex section, implement, test, verify, push, and create PR.
+description: W-06〜W-10 execution for Codex — read Issue Context for Codex section, implement, test, verify, push, and create PR.
+user-invocable: true
+argument-hint: '[#Issue番号]'
 ---
 
 # /implement — 実装（Codex 担当, W-06〜W-10）

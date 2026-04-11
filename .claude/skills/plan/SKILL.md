@@ -1,6 +1,8 @@
 ---
 name: plan
 description: W-01〜W-05 execution — turn a problem into a ready-to-implement Issue with AC, ADR, and Context for Codex.
+user-invocable: true
+argument-hint: '[#Issue番号 or 課題の説明]'
 ---
 
 # /plan — 実装前準備（W-01〜W-05）

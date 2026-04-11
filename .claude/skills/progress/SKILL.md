@@ -1,6 +1,8 @@
 ---
 name: progress
-description: Audit project progress in 3 axes (planning, integration, quality)
+description: 3-axis project audit — planning (issues) / integration (PRs) / quality (CI).
+user-invocable: true
+argument-hint: '[--detail] 詳細モード (オプション)'
 ---
 
 # /progress — 進捗 3 軸監査

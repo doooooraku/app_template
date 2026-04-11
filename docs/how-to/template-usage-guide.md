@@ -80,6 +80,64 @@ cd リポジトリ名
 
 ---
 
+## Phase 1.5: Claude Code Skills のインストール（最初の 1 回のみ）
+
+> **重要**: Claude Code v2.1+ は **プロジェクト直下の `.claude/skills/` を認識しません**。Skills は **ユーザーレベル `~/.claude/skills/`** に配置する必要があります。
+
+このテンプレートには 7 つの Claude Code Skills + 3 つの Codex Skills が同梱されています。最初に 1 回だけ **ユーザー領域にコピー**してください（2 回目以降の新アプリ作成時はスキップ可）。
+
+### Skills を `~/.claude/skills/` にインストール
+
+```bash
+# Claude Code 用（計画・議論・レビュー・振り返り）
+mkdir -p ~/.claude/skills
+cp -r .claude/skills/discuss ~/.claude/skills/
+cp -r .claude/skills/plan ~/.claude/skills/
+cp -r .claude/skills/review-pr ~/.claude/skills/
+cp -r .claude/skills/retro ~/.claude/skills/
+cp -r .claude/skills/progress ~/.claude/skills/
+cp -r .claude/skills/store-text ~/.claude/skills/
+cp -r .claude/skills/release-check ~/.claude/skills/
+
+# Codex 用（実装）— Codex を使う場合のみ
+mkdir -p ~/.codex/skills
+cp -r .codex/skills/* ~/.codex/skills/
+```
+
+### インストール確認
+
+新しい Claude Code セッションを起動して `/skills` を実行:
+
+```bash
+# 期待される出力
+User skills (~/.claude/skills)
+  discuss · ...
+  plan · ...
+  review-pr · ...
+  retro · ...
+  progress · ...
+  store-text · ...
+  release-check · ...
+```
+
+### 各 Skill の使い方
+
+| Skill            | 呼び出し例        | いつ使う                       |
+| ---------------- | ----------------- | ------------------------------ |
+| `/discuss`       | `/discuss <議題>` | 議論したい・方針を決めたい     |
+| `/plan`          | `/plan #123`      | Issue を実装前の状態まで固める |
+| `/review-pr`     | `/review-pr #456` | Codex が作った PR をレビュー   |
+| `/retro`         | `/retro <対象>`   | マイルストーン完了・リリース後 |
+| `/progress`      | `/progress`       | 進捗 3 軸確認                  |
+| `/store-text`    | `/store-text`     | ストア掲載テキスト生成         |
+| `/release-check` | `/release-check`  | リリース前最終チェック         |
+
+### Skills をプロジェクト単位で管理したい場合
+
+現行の Claude Code では不可能ですが、将来対応された場合に備えて、このテンプレートでは `.claude/skills/<name>/SKILL.md` の構造で同梱しています。
+
+---
+
 ## Phase 2: 初期セットアップ（setup.sh）
 
 ### setup.sh を実行する

@@ -1,6 +1,8 @@
 ---
 name: fix-ci
 description: W-08a CI failure recovery — careful mode after /implement retry fails.
+user-invocable: true
+argument-hint: '[失敗したゲート名 (任意)]'
 ---
 
 # /fix-ci — CI 失敗リカバリ（Codex 担当, W-08a）
