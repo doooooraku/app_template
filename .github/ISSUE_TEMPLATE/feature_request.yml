@@ -192,3 +192,49 @@ body:
         戻し方（revert/フラグOFF/段階適用など）：
     validations:
       required: true
+
+  - type: textarea
+    id: context_for_codex
+    attributes:
+      label: 'Context for Codex（実装エージェント向け / W-05.5 で埋める）'
+      description: 'Claude Code の /plan Skill が W-05.5 でこのセクションを埋める。Codex はこれを読んで実装する。'
+      placeholder: |
+        ## Context for Codex
+
+        ### Acceptance Criteria (must pass)
+        (上の受け入れ条件をチェックボックス形式で再掲)
+        - [ ] AC1:
+        - [ ] AC2:
+
+        ### Files to read first (for context)
+        - src/features/...
+        - docs/reference/constraints.md
+        - docs/adr/ADR-xxxx-...md
+
+        ### Files likely to change
+        - src/features/<feature>/<Feature>Screen.tsx — 変更内容
+        - src/db/schema.ts — 変更内容
+        - src/core/i18n/locales/*.ts — 新キー名
+
+        ### Constraints
+        - pnpm 必須（npm 禁止）
+        - API キー直書き禁止
+        - 既存の vertical slice パターンに従う
+        - i18n キーは全 19 言語に明示的に追加
+
+        ### Test strategy
+        - Unit: __tests__/<feature>.test.ts
+        - E2E: maestro/flows/<feature>.yml (if user-facing)
+
+        ### Suggested implementation order
+        1. DB schema（必要なら）
+        2. Repository（親子関係考慮）
+        3. Service 層
+        4. UI コンポーネント
+        5. i18n キー
+        6. テスト
+
+        ### Related ADRs
+        - ADR-XXXX: タイトル
+    validations:
+      required: false

@@ -32,7 +32,7 @@ PR Template
   - constraints: docs/reference/constraints.md
   - basic_spec: docs/reference/basic_spec.md
   - functional_spec: docs/reference/functional_spec.md
-  - workflow: docs/how-to/whole_workflow.md
+  - workflow: docs/how-to/workflow/whole_workflow.md
   - figma: （URL）
   - spec/notes: （該当docsやIssueコメントURL）
 
@@ -215,7 +215,27 @@ PR Template
 - [ ] docs影響を判定し、必要なら更新した（links記載）
 - [ ] リスクとロールバックを書いた
 
+---
+
+## 14. W-10.5 レビュー（Claude Code が記入）
+
+<!-- Codex が PR を作成後、Claude Code が /review-pr Skill で記入する -->
+
+- [ ] **AC 充足確認**: Issue の Acceptance Criteria が全て ✅ になっている
+- [ ] **constraints / ADR 準拠**: docs/reference/constraints.md と関連 ADR に違反していない
+- [ ] **影響範囲の乖離チェック**: W-05 で予想した影響範囲と実際の変更が一致している
+- [ ] **デグレリスク**: 既存テストが壊れていない、カバレッジが下がっていない
+- [ ] **コード品質**: 既存の vertical slice パターンに従っている、不要な抽象化がない
+- [ ] **ドキュメント更新**: lessons.md / ADR / functional_spec が必要に応じて更新されている
+
+**レビュー判定**: [ ] Approve / [ ] Request Changes / [ ] Discuss
+
+**理由（2〜3 文）**:
+
+**マージ方法**: [ ] `auto-merge` ラベル付きで自動 / [ ] 人間承認待ち
+
 <!--
 補足：
 - 詳しい議論メモは本文に溜めない。必要なら ADR を作り、ここにはリンクだけ残す。
+- Claude Code は /review-pr Skill でこのセクションを記入する。
 -->
