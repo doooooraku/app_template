@@ -69,6 +69,11 @@ const tr: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Abonelikler otomatik olarak yenilenir. Hesap ayarlarınızdan istediğiniz zaman iptal edebilirsiniz.',
 
+  proPlanLifetimeTitle: 'Ömür boyu',
+  proPlanLifetimeBadge: 'Tek seferlik',
+  proCtaLifetime: 'Ömür Boyu Satın Al',
+  proLifetimeFinePrint: 'Tek seferlik satın alma. Otomatik yenileme yok.',
+
   // --- Legal ---
   legalSectionTitle: 'Yasal',
   legalPrivacyPolicyLabel: 'Gizlilik Politikası',

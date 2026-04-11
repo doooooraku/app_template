@@ -69,6 +69,11 @@ const ru: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Подписки продлеваются автоматически. Отменить можно в любое время в настройках аккаунта.',
 
+  proPlanLifetimeTitle: 'Навсегда',
+  proPlanLifetimeBadge: 'Разовый платёж',
+  proCtaLifetime: 'Купить навсегда',
+  proLifetimeFinePrint: 'Разовая покупка. Без автоматического продления.',
+
   // --- Legal ---
   legalSectionTitle: 'Правовая информация',
   legalPrivacyPolicyLabel: 'Политика конфиденциальности',

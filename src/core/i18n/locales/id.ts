@@ -69,6 +69,11 @@ const id: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Langganan diperpanjang secara otomatis. Batalkan kapan saja di pengaturan akun Anda.',
 
+  proPlanLifetimeTitle: 'Seumur Hidup',
+  proPlanLifetimeBadge: 'Bayar sekali',
+  proCtaLifetime: 'Beli Seumur Hidup',
+  proLifetimeFinePrint: 'Pembelian sekali. Tidak ada perpanjangan otomatis.',
+
   // --- Legal ---
   legalSectionTitle: 'Hukum',
   legalPrivacyPolicyLabel: 'Kebijakan Privasi',

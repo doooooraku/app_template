@@ -34,32 +34,35 @@
 - `docs/adr/adr_template.md`
   - ADR を追加するときのテンプレート
 
-### How-to（手順）
+### How-to（手順 — サブディレクトリ別）
 
-- `docs/how-to/template-usage-guide.md`
-  - テンプレートの使い方完全ガイド（Phase 0〜4）
-- `docs/how-to/quickstart.md`
-  - プロジェクトの初期セットアップ手順
-- `docs/how-to/whole_workflow.md`
-  - 仕様→Issue→実装→テスト→PR→マージ→リリースの全体フロー
-- `docs/how-to/git_workflow.md`
-  - Issue→Branch→Commit→PR→Merge の Git 運用手順
-- `docs/how-to/testing.md`
-  - テストの実行方法（Jest / Maestro / CI）
-- `docs/how-to/実装ルール.md`
-  - 実装時のコード規約・設計ルール
-- `docs/how-to/android_ビルド手順.md`
-  - Android の Debug / Release ビルド手順
-- `docs/how-to/ios_ビルド手順.md`
-  - iOS の Debug / Release ビルド手順
-- `docs/how-to/sentry_setup.md`
-  - Sentry（エラー監視）のセットアップ手順
-- `docs/how-to/debug-guide.md`
-  - デバッグの進め方ガイド
-- `docs/how-to/screenshot-generation.md`
-  - ストア掲載用スクリーンショットの生成手順
-- `docs/how-to/store-listing-guide.md`
-  - ストア掲載情報の管理ガイド
+**ルート**（テンプレート全体に関わる）
+
+- `docs/how-to/template-usage-guide.md` — テンプレートの使い方完全ガイド（Phase 0〜4）
+- `docs/how-to/quickstart.md` — プロジェクトの初期セットアップ手順
+
+**development/**（開発時に頻繁に参照）
+
+- `docs/how-to/development/coding_rules.md` — 実装時のコード規約・設計ルール
+- `docs/how-to/development/android_build.md` — Android の Debug / Release ビルド手順
+- `docs/how-to/development/ios_build.md` — iOS の Debug / Release ビルド手順
+- `docs/how-to/development/debug_guide.md` — デバッグの進め方ガイド
+- `docs/how-to/development/sentry_setup.md` — Sentry（エラー監視）のセットアップ手順
+
+**workflow/**（フロー / リリース運用）
+
+- `docs/how-to/workflow/whole_workflow.md` — 仕様→Issue→実装→テスト→PR→マージ→リリースの全体フロー
+- `docs/how-to/workflow/git_workflow.md` — Issue→Branch→Commit→PR→Merge の Git 運用手順
+- `docs/how-to/workflow/store_listing_guide.md` — ストア掲載情報の管理ガイド
+- `docs/how-to/workflow/screenshot_generation.md` — ストア掲載用スクリーンショットの生成手順
+
+**testing/**（テスト関連）
+
+- `docs/how-to/testing/testing.md` — テストの実行方法（Jest / Maestro / CI）
+
+**i18n/**（多言語対応）
+
+- 必要に応じて追加（翻訳ルール、ロケールチェック手順など）
 
 ---
 
@@ -141,13 +144,13 @@
 
 ## 6. 具体例（1つだけ）
 
-「Freeでも習慣を5つまでにする」変更をする場合：
+「Free のアイテム数を 5 件まで増やす」変更をする場合：
 
-- `constraints.md` を更新（Free/Pro差分が変わる）
-- ADR を追加（なぜ5にする？代案は？）
+- `constraints.md` を更新（Free/Pro 差分が変わる）
+- ADR を追加（なぜ 5 にする？代案は？）
 - `basic_spec.md` と `functional_spec.md` を更新
 - テスト（Jest/E2E）で合否条件を更新
-- PRテンプレで更新済みリンクを貼る
+- PR テンプレで更新済みリンクを貼る
 
 ---
 

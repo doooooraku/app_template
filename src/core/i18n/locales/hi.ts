@@ -69,6 +69,11 @@ const hi: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'सदस्यता स्वचालित रूप से नवीनीकृत होती है। आप अपने खाता सेटिंग्स में कभी भी रद्द कर सकते हैं।',
 
+  proPlanLifetimeTitle: 'आजीवन',
+  proPlanLifetimeBadge: 'एकमुश्त',
+  proCtaLifetime: 'आजीवन खरीदें',
+  proLifetimeFinePrint: 'एकमुश्त खरीद। कोई स्वत: नवीकरण नहीं।',
+
   // --- Legal ---
   legalSectionTitle: 'कानूनी जानकारी',
   legalPrivacyPolicyLabel: 'गोपनीयता नीति',

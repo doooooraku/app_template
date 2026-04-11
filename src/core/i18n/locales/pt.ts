@@ -69,6 +69,11 @@ const pt: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'As assinaturas são renovadas automaticamente. Cancele a qualquer momento nas configurações da sua conta.',
 
+  proPlanLifetimeTitle: 'Vitalício',
+  proPlanLifetimeBadge: 'Pagamento único',
+  proCtaLifetime: 'Comprar vitalício',
+  proLifetimeFinePrint: 'Compra única. Sem renovação automática.',
+
   // --- Legal ---
   legalSectionTitle: 'Jurídico',
   legalPrivacyPolicyLabel: 'Política de privacidade',

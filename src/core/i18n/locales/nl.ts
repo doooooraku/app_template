@@ -69,6 +69,11 @@ const nl: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Abonnementen worden automatisch verlengd. Annuleer op elk moment in je accountinstellingen.',
 
+  proPlanLifetimeTitle: 'Levenslang',
+  proPlanLifetimeBadge: 'Eenmalige betaling',
+  proCtaLifetime: 'Levenslang kopen',
+  proLifetimeFinePrint: 'Eenmalige aankoop. Geen automatische verlenging.',
+
   // --- Legal ---
   legalSectionTitle: 'Juridisch',
   legalPrivacyPolicyLabel: 'Privacybeleid',

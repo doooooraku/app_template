@@ -68,6 +68,11 @@ const ko: Partial<Record<TranslationKey, string>> = {
   proCtaStayFree: '무료로 계속 사용',
   proFinePrint: '구독은 자동으로 갱신됩니다. 계정 설정에서 언제든지 해지할 수 있습니다.',
 
+  proPlanLifetimeTitle: '평생',
+  proPlanLifetimeBadge: '일회성 결제',
+  proCtaLifetime: '평생 구매',
+  proLifetimeFinePrint: '일회성 구매입니다. 자동 갱신이 없습니다.',
+
   // --- Legal ---
   legalSectionTitle: '법적 정보',
   legalPrivacyPolicyLabel: '개인정보 처리방침',

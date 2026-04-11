@@ -68,6 +68,11 @@ const zhHans: Partial<Record<TranslationKey, string>> = {
   proCtaStayFree: '继续免费使用',
   proFinePrint: '订阅将自动续费。您可以随时在账户设置中取消。',
 
+  proPlanLifetimeTitle: '永久版',
+  proPlanLifetimeBadge: '一次付费',
+  proCtaLifetime: '购买永久版',
+  proLifetimeFinePrint: '一次性购买，永久使用。无自动续费。',
+
   // --- Legal ---
   legalSectionTitle: '法律信息',
   legalPrivacyPolicyLabel: '隐私政策',

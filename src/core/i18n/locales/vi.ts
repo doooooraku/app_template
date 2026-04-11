@@ -68,6 +68,11 @@ const vi: Partial<Record<TranslationKey, string>> = {
   proCtaStayFree: 'Tiếp tục miễn phí',
   proFinePrint: 'Gói đăng ký tự động gia hạn. Hủy bất cứ lúc nào trong cài đặt tài khoản.',
 
+  proPlanLifetimeTitle: 'Trọn đời',
+  proPlanLifetimeBadge: 'Thanh toán một lần',
+  proCtaLifetime: 'Mua trọn đời',
+  proLifetimeFinePrint: 'Mua một lần. Không tự động gia hạn.',
+
   // --- Legal ---
   legalSectionTitle: 'Pháp lý',
   legalPrivacyPolicyLabel: 'Chính sách bảo mật',

@@ -42,4 +42,4 @@ store-listing/
 
 ## ワークフロー
 
-詳しい手順は[ストア掲載ガイド](../how-to/store-listing-guide.md)を参照してください。
+詳しい手順は[ストア掲載ガイド](../how-to/workflow/store_listing_guide.md)を参照してください。

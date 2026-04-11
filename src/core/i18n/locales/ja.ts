@@ -69,6 +69,11 @@ const ja: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'サブスクリプションは自動更新されます。アカウント設定からいつでもキャンセルできます。',
 
+  proPlanLifetimeTitle: '買い切り',
+  proPlanLifetimeBadge: '一度払い',
+  proCtaLifetime: '買い切りで購入',
+  proLifetimeFinePrint: '一度の購入で永久に利用できます。自動更新はありません。',
+
   // --- Legal ---
   legalSectionTitle: '法的情報',
   legalPrivacyPolicyLabel: 'プライバシーポリシー',

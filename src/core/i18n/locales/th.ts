@@ -68,6 +68,11 @@ const th: Partial<Record<TranslationKey, string>> = {
   proCtaStayFree: 'ใช้งานฟรีต่อไป',
   proFinePrint: 'การสมัครสมาชิกจะต่ออายุอัตโนมัติ ยกเลิกได้ทุกเมื่อในการตั้งค่าบัญชี',
 
+  proPlanLifetimeTitle: 'ตลอดชีพ',
+  proPlanLifetimeBadge: 'จ่ายครั้งเดียว',
+  proCtaLifetime: 'ซื้อตลอดชีพ',
+  proLifetimeFinePrint: 'ซื้อครั้งเดียว ไม่มีการต่ออายุอัตโนมัติ',
+
   // --- Legal ---
   legalSectionTitle: 'ข้อกฎหมาย',
   legalPrivacyPolicyLabel: 'นโยบายความเป็นส่วนตัว',

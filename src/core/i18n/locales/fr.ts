@@ -69,6 +69,11 @@ const fr: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     "L'abonnement se renouvelle automatiquement. Vous pouvez annuler à tout moment dans les paramètres de votre compte.",
 
+  proPlanLifetimeTitle: 'À vie',
+  proPlanLifetimeBadge: 'Paiement unique',
+  proCtaLifetime: 'Acheter à vie',
+  proLifetimeFinePrint: 'Achat unique. Pas de renouvellement automatique.',
+
   // --- Legal ---
   legalSectionTitle: 'Mentions légales',
   legalPrivacyPolicyLabel: 'Politique de confidentialité',

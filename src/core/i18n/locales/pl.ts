@@ -69,6 +69,11 @@ const pl: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Subskrypcje odnawiają się automatycznie. Możesz anulować w dowolnym momencie w ustawieniach konta.',
 
+  proPlanLifetimeTitle: 'Dożywotnio',
+  proPlanLifetimeBadge: 'Płatność jednorazowa',
+  proCtaLifetime: 'Kup dożywotnio',
+  proLifetimeFinePrint: 'Zakup jednorazowy. Brak automatycznego odnowienia.',
+
   // --- Legal ---
   legalSectionTitle: 'Informacje prawne',
   legalPrivacyPolicyLabel: 'Polityka prywatności',

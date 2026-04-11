@@ -69,6 +69,11 @@ const sv: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Prenumerationer förnyas automatiskt. Avsluta när som helst i dina kontoinställningar.',
 
+  proPlanLifetimeTitle: 'Livstid',
+  proPlanLifetimeBadge: 'Engångsbetalning',
+  proCtaLifetime: 'Köp livstid',
+  proLifetimeFinePrint: 'Engångsköp. Ingen automatisk förnyelse.',
+
   // --- Legal ---
   legalSectionTitle: 'Juridiskt',
   legalPrivacyPolicyLabel: 'Integritetspolicy',

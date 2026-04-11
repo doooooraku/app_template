@@ -69,6 +69,11 @@ const de: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Abonnements verlängern sich automatisch. Du kannst jederzeit in deinen Kontoeinstellungen kündigen.',
 
+  proPlanLifetimeTitle: 'Lebenslang',
+  proPlanLifetimeBadge: 'Einmalzahlung',
+  proCtaLifetime: 'Lebenslang kaufen',
+  proLifetimeFinePrint: 'Einmaliger Kauf. Keine automatische Verlängerung.',
+
   // --- Legal ---
   legalSectionTitle: 'Rechtliches',
   legalPrivacyPolicyLabel: 'Datenschutzrichtlinie',

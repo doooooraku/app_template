@@ -13,11 +13,11 @@
 * **ADR（なぜそう決めたか）**：`docs/adr/ADR-*.md`（本文から理由を追い出す）
 * **How-to（手順）**：
 
-  * `docs/how-to/whole_workflow.md`（開発〜リリースの回し方）
-  * `docs/how-to/git_workflow.md`（Issue~mergeの回し方）
-  * `docs/how-to/testing.md`（テストの回し方。正はCI/package.jsonにリンク）
-  * `docs/how-to/android_ビルド手順.md`（Androidビルド手順）
-  * `docs/how-to/ios_ビルド手順.md`（iOSビルド手順）
+  * `docs/how-to/workflow/whole_workflow.md`（開発〜リリースの回し方）
+  * `docs/how-to/workflow/git_workflow.md`（Issue~mergeの回し方）
+  * `docs/how-to/testing/testing.md`（テストの回し方。正はCI/package.jsonにリンク）
+  * `docs/how-to/development/android_build.md`（Androidビルド手順）
+  * `docs/how-to/development/ios_build.md`（iOSビルド手順）
 * **合否（Acceptance Criteria）**：基本は **自動テスト（Jest）** ＋ 必要なら E2E（Maestro）
   → 「合格/不合格」を人の文章から機械に寄せる。
 * **強制装置（Docs-as-code）**：Issue Forms / PRテンプレ / Required checks / CODEOWNERS
@@ -188,8 +188,8 @@
 
 - **トリガーキー**：mainが安定 / 仕様書から作成するIssue/バグが無くなった
 - **作業内容**：
-  - `docs/how-to/android_ビルド手順.md`の実施
-  - `docs/how-to/ios_ビルド手順.md`の実施
+  - `docs/how-to/development/android_build.md` の実施
+  - `docs/how-to/development/ios_build.md` の実施
 - **INPUT**：main、リリースノート、Storeメタ情報
 - **OUTPUT**：TestFlight / Play内部テスト / 本番リリース
 - **完了条件**：ストアの審査/配信が通る。

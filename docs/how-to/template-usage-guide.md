@@ -333,16 +333,16 @@ db.execSync('PRAGMA user_version = 2');
 
 セットアップとカスタマイズが終わったら、以下のドキュメントを参照してください。
 
-| Phase | 内容                              | ドキュメント                                           |
-| ----- | --------------------------------- | ------------------------------------------------------ |
-| 5     | サービス連携（Sentry）            | [sentry_setup.md](./sentry_setup.md)                   |
-| 5     | サービス連携（AdMob・RevenueCat） | `.env` のキー設定で有効化                              |
-| 6     | テスト                            | [testing.md](./testing.md)                             |
-| 6     | デバッグ                          | [debug-guide.md](./debug-guide.md)                     |
-| 7     | ストア掲載準備                    | [store-listing-guide.md](./store-listing-guide.md)     |
-| 7     | スクリーンショット生成            | [screenshot-generation.md](./screenshot-generation.md) |
-| 8     | Android ビルド                    | [android\_ビルド手順.md](./android_ビルド手順.md)      |
-| 8     | iOS ビルド                        | [ios\_ビルド手順.md](./ios_ビルド手順.md)              |
-| 9     | 開発フロー全体                    | [whole_workflow.md](./whole_workflow.md)               |
-| 9     | Git ワークフロー                  | [git_workflow.md](./git_workflow.md)                   |
-| 9     | 実装ルール                        | [実装ルール.md](./実装ルール.md)                       |
+| Phase | 内容                              | ドキュメント                                                             |
+| ----- | --------------------------------- | ------------------------------------------------------------------------ |
+| 5     | サービス連携（Sentry）            | [development/sentry_setup.md](./development/sentry_setup.md)             |
+| 5     | サービス連携（AdMob・RevenueCat） | `.env` のキー設定で有効化                                                |
+| 6     | テスト                            | [testing/testing.md](./testing/testing.md)                               |
+| 6     | デバッグ                          | [development/debug_guide.md](./development/debug_guide.md)               |
+| 7     | ストア掲載準備                    | [workflow/store_listing_guide.md](./workflow/store_listing_guide.md)     |
+| 7     | スクリーンショット生成            | [workflow/screenshot_generation.md](./workflow/screenshot_generation.md) |
+| 8     | Android ビルド                    | [development/android_build.md](./development/android_build.md)           |
+| 8     | iOS ビルド                        | [development/ios_build.md](./development/ios_build.md)                   |
+| 9     | 開発フロー全体                    | [workflow/whole_workflow.md](./workflow/whole_workflow.md)               |
+| 9     | Git ワークフロー                  | [workflow/git_workflow.md](./workflow/git_workflow.md)                   |
+| 9     | 実装ルール                        | [development/coding_rules.md](./development/coding_rules.md)             |

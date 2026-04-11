@@ -69,6 +69,11 @@ const es: Partial<Record<TranslationKey, string>> = {
   proFinePrint:
     'Las suscripciones se renuevan automáticamente. Puedes cancelar en cualquier momento desde los ajustes de tu cuenta.',
 
+  proPlanLifetimeTitle: 'De por vida',
+  proPlanLifetimeBadge: 'Pago único',
+  proCtaLifetime: 'Comprar de por vida',
+  proLifetimeFinePrint: 'Compra única. Sin renovación automática.',
+
   // --- Legal ---
   legalSectionTitle: 'Legal',
   legalPrivacyPolicyLabel: 'Política de privacidad',
