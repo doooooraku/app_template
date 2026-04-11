@@ -146,6 +146,18 @@ Codex uses **"doing" skills**: `/implement`, `/fix-ci`, `/i18n-add`.
 - `/store-text` — generate store listing text
 - `/release-check` — pre-release final check
 
+### Third-party auto-triggered skills (no explicit call needed)
+
+Bundled from official upstreams. These trigger automatically when the conversation matches their description — you do not need to type `/xxx`.
+
+| Skill                         | Source                                                                                      | When it triggers                                                 |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `skill-creator`               | [anthropics/skills](https://github.com/anthropics/skills) (official)                        | When creating, editing, or evaluating a new Skill                |
+| `react-native-best-practices` | [callstackincubator/agent-skills](https://github.com/callstackincubator/agent-skills) (MIT) | RN performance tasks (FPS, TTI, bundle size, memory, re-renders) |
+| `upgrading-react-native`      | Callstack (same repo)                                                                       | RN / Expo SDK version upgrade (rn-diff-purge, CocoaPods, Gradle) |
+
+**Supply-chain policy**: Only bundle third-party skills from **verified official publishers** (Anthropic, Callstack, Vercel, Cloudflare, Expo). Review each `SKILL.md` for hidden prompts before adding. Do not add skills based on popularity alone.
+
 ---
 
 ## 5. File Reference
