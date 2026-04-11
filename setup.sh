@@ -177,6 +177,35 @@ EOF
   echo "  ⚠ Tabs 構成を残しているので、不要なら app/(tabs)/_layout.tsx を編集してください"
 fi
 
+# --- Claude Code subagents を user-level にインストール ---
+# 配置先: ~/.claude/agents/ (user scope)
+# 理由: 現バージョンの Claude Code は project-level .claude/agents/ を認識しない (2026-04-11 検証)
+# cp -n で既存ファイルは保護 (ユーザーがカスタマイズしている可能性)
+echo ""
+echo "=== Claude Code subagents をインストール中 ==="
+if [[ -d ".claude/agents" ]]; then
+  USER_AGENTS_DIR="$HOME/.claude/agents"
+  mkdir -p "$USER_AGENTS_DIR"
+  installed=0
+  skipped=0
+  for agent_file in .claude/agents/*.md; do
+    [[ -f "$agent_file" ]] || continue
+    base=$(basename "$agent_file")
+    if [[ -f "$USER_AGENTS_DIR/$base" ]]; then
+      echo "  - $base (既に存在、スキップ)"
+      skipped=$((skipped + 1))
+    else
+      cp "$agent_file" "$USER_AGENTS_DIR/$base"
+      echo "  + $base → $USER_AGENTS_DIR/"
+      installed=$((installed + 1))
+    fi
+  done
+  echo "  合計: ${installed} installed, ${skipped} skipped"
+  echo "  /agents コマンドで認識されているか確認してください"
+else
+  echo "  .claude/agents/ が無いのでスキップ"
+fi
+
 # --- 依存関係のインストール ---
 echo ""
 echo "=== 依存関係をインストール中 ==="
@@ -195,4 +224,5 @@ echo "  次のステップ:"
 echo "    1. .env を確認してAPIキーを設定する"
 echo "    2. pnpm dev で開発を開始する"
 echo "    3. docs/ 内のドキュメントを参照してカスタマイズする"
+echo "    4. Claude Code を再起動して /agents で subagents を確認する"
 echo "========================================"
