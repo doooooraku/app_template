@@ -3,5 +3,6 @@ node_modules/
 android/
 ios/
 .expo/
+.claude/
 *.lock
 pnpm-lock.yaml
