@@ -149,7 +149,7 @@ importers:
     devDependencies:
       '@react-native/eslint-config':
         specifier: ^0.82.1
-        version: 0.82.1(eslint@9.39.1)(jest@29.7.0(@types/node@24.10.1))(prettier@3.6.2)(typescript@5.9.3)
+        version: 0.82.1(eslint@9.39.1)(jest@29.7.0(@types/node@24.10.1))(prettier@3.8.3)(typescript@5.9.3)
       '@tamagui/babel-plugin':
         specifier: 1.144.3
         version: 1.144.3(react-dom@19.2.0(react@19.2.0))(react-native@0.83.4(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
@@ -190,8 +190,8 @@ importers:
         specifier: ^16.1.0
         version: 16.4.0
       prettier:
-        specifier: ^3.6.2
-        version: 3.6.2
+        specifier: ^3.8.3
+        version: 3.8.3
       react-test-renderer:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
@@ -1230,6 +1230,10 @@ packages:
 
   '@istanbuljs/load-nyc-config@1.1.0':
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
+    engines: {node: '>=8'}
+
+  '@istanbuljs/schema@0.1.6':
+    resolution: {integrity: sha512-+Sg6GCR/wy1oSmQDFq4LQDAhm3ETKnorxN+y5nbLULOR3P0c14f2Wurzj3/xqPXtasLFfHd5iRFQ7AJt4KH2cw==}
     engines: {node: '>=8'}
 
   '@istanbuljs/schema@0.1.6':
@@ -5238,8 +5242,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7760,6 +7764,9 @@ snapshots:
   '@istanbuljs/schema@0.1.6':
     optional: true
 
+  '@istanbuljs/schema@0.1.6':
+    optional: true
+
   '@jest/console@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
@@ -8324,7 +8331,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@react-native/eslint-config@0.82.1(eslint@9.39.1)(jest@29.7.0(@types/node@24.10.1))(prettier@3.6.2)(typescript@5.9.3)':
+  '@react-native/eslint-config@0.82.1(eslint@9.39.1)(jest@29.7.0(@types/node@24.10.1))(prettier@3.8.3)(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/eslint-parser': 7.28.5(@babel/core@7.29.0)(eslint@9.39.1)
@@ -8339,7 +8346,7 @@ snapshots:
       eslint-plugin-react: 7.37.5(eslint@9.39.1)
       eslint-plugin-react-hooks: 5.2.0(eslint@9.39.1)
       eslint-plugin-react-native: 4.1.0(eslint@9.39.1)
-      prettier: 3.6.2
+      prettier: 3.8.3
     transitivePeerDependencies:
       - jest
       - supports-color
@@ -13165,7 +13172,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.6.2: {}
+  prettier@3.8.3: {}
 
   pretty-format@29.7.0:
     dependencies:
