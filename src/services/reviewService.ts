@@ -3,6 +3,8 @@ import * as StoreReview from 'expo-store-review';
 import * as SecureStore from 'expo-secure-store';
 
 const REVIEW_STATE_KEY = 'app_review_state';
+const MAX_PROMPTS = 3;
+const COOLDOWN_DAYS = 90;
 
 type ReviewState = {
   lastPromptedAt: string | null;
@@ -23,37 +25,42 @@ async function saveState(state: ReviewState): Promise<void> {
   await SecureStore.setItemAsync(REVIEW_STATE_KEY, JSON.stringify(state));
 }
 
-/**
- * Request an in-app review if conditions are met:
- * - Native platform (iOS/Android)
- * - StoreReview is available
- * - Not prompted in the last 90 days
- * - Maximum 3 prompts total
- *
- * Call this at a positive moment (e.g. after completing a key action).
- */
-export async function maybeRequestReview(): Promise<boolean> {
-  if (Platform.OS === 'web') return false;
+export type ReviewDecision = 'prompt' | null;
 
-  const isAvailable = await StoreReview.isAvailableAsync();
-  if (!isAvailable) return false;
-
-  const state = await loadState();
-
-  if (state.promptCount >= 3) return false;
+export function shouldRequestReview(state: ReviewState): ReviewDecision {
+  if (state.promptCount >= MAX_PROMPTS) return null;
 
   if (state.lastPromptedAt) {
     const daysSince =
       (Date.now() - new Date(state.lastPromptedAt).getTime()) / (1000 * 60 * 60 * 24);
-    if (daysSince < 90) return false;
+    if (daysSince < COOLDOWN_DAYS) return null;
   }
 
-  await StoreReview.requestReview();
+  return 'prompt';
+}
 
-  await saveState({
-    lastPromptedAt: new Date().toISOString(),
-    promptCount: state.promptCount + 1,
-  });
+/**
+ * Call at a positive moment (e.g. after completing a key action).
+ * Fire-and-forget — errors never propagate to the caller.
+ */
+export async function maybeRequestReview(): Promise<void> {
+  try {
+    if (Platform.OS === 'web') return;
 
-  return true;
+    const isAvailable = await StoreReview.isAvailableAsync();
+    if (!isAvailable) return;
+
+    const state = await loadState();
+    const decision = shouldRequestReview(state);
+    if (!decision) return;
+
+    await StoreReview.requestReview();
+
+    await saveState({
+      lastPromptedAt: new Date().toISOString(),
+      promptCount: state.promptCount + 1,
+    });
+  } catch (e) {
+    console.warn('[ReviewPrompt] failed (non-fatal):', e);
+  }
 }

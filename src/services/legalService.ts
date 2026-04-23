@@ -6,22 +6,32 @@ export type LegalLinks = {
   termsUrl: string;
 };
 
-function getExtraValue(key: string): string {
-  const expoConfig = Constants.expoConfig ?? Constants.manifest;
-  const extra = (expoConfig as any)?.extra ?? {};
-  return (extra?.[key] as string) ?? '';
+const isHttpUrl = (value: string) => /^https?:\/\/\S+$/i.test(value);
+
+function resolveUrl(value: unknown, fallback: string): string {
+  if (typeof value !== 'string') return fallback;
+  const trimmed = value.trim();
+  if (!trimmed || !isHttpUrl(trimmed)) return fallback;
+  return trimmed;
 }
 
-export function getLegalLinks(): LegalLinks {
+export function getLegalLinks(extra?: Record<string, unknown>): LegalLinks {
+  const resolved = extra ?? (Constants.expoConfig ?? (Constants.manifest as any))?.extra ?? {};
   return {
-    privacyUrl: getExtraValue('LEGAL_PRIVACY_URL') || 'https://example.com/privacy',
-    termsUrl: getExtraValue('LEGAL_TERMS_URL') || 'https://example.com/terms',
+    privacyUrl: resolveUrl(resolved['LEGAL_PRIVACY_URL'], 'https://example.com/privacy'),
+    termsUrl: resolveUrl(resolved['LEGAL_TERMS_URL'], 'https://example.com/terms'),
   };
 }
 
-export async function openExternalLink(url: string): Promise<void> {
-  const supported = await Linking.canOpenURL(url);
-  if (supported) {
-    await Linking.openURL(url);
+export async function openExternalLink(url: string): Promise<boolean> {
+  try {
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      await Linking.openURL(url);
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
   }
 }
