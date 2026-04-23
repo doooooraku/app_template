@@ -47,6 +47,36 @@ For each locale, the following files are required:
 | Polish                | `pl`      |                              |
 | Swedish               | `sv`      |                              |
 
+## Category Metadata (root level)
+
+These files are NOT locale-specific — they apply globally:
+
+| File                                | Description                       | Example values                                                                                           |
+| ----------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `primary_category.txt`              | Primary App Store category        | `BUSINESS`, `UTILITIES`, `PRODUCTIVITY`, `LIFESTYLE`, `ENTERTAINMENT`, `EDUCATION`, `HEALTH_AND_FITNESS` |
+| `secondary_category.txt`            | Secondary category (optional)     | Same as above                                                                                            |
+| `copyright.txt`                     | Copyright holder                  | `2025 Your Name`                                                                                         |
+| `primary_first_sub_category.txt`    | Primary sub-category 1 (optional) | Usually empty                                                                                            |
+| `primary_second_sub_category.txt`   | Primary sub-category 2 (optional) | Usually empty                                                                                            |
+| `secondary_first_sub_category.txt`  | Secondary sub-category 1          | Usually empty                                                                                            |
+| `secondary_second_sub_category.txt` | Secondary sub-category 2          | Usually empty                                                                                            |
+
+Full category list: [App Store Categories](https://developer.apple.com/app-store/categories/)
+
+## Review Information
+
+Files in `review_information/` provide App Store review team with contact and demo access:
+
+| File                | Description              | Notes                                |
+| ------------------- | ------------------------ | ------------------------------------ |
+| `demo_user.txt`     | Demo account username    | Required if app needs login          |
+| `demo_password.txt` | Demo account password    | Required if app needs login          |
+| `email_address.txt` | Contact email for review | Apple may contact during review      |
+| `first_name.txt`    | Contact first name       |                                      |
+| `last_name.txt`     | Contact last name        |                                      |
+| `phone_number.txt`  | Contact phone (E.164)    | Example: `+1-555-0100`               |
+| `notes.txt`         | Notes for reviewer       | Special instructions, test data, etc |
+
 ## Validation
 
 ```bash
