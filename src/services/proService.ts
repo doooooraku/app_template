@@ -9,7 +9,7 @@ import Purchases, {
   type PurchasesStoreProduct,
 } from 'react-native-purchases';
 
-import type { ProState } from '@/src/types/models';
+import type { PlanKind, ProState } from '@/src/types/models';
 import { IAP_DEBUG } from '@/src/core/debug';
 
 export type PlanType = 'monthly' | 'yearly' | 'lifetime';
@@ -54,25 +54,26 @@ async function saveState(state: ProState) {
   await SecureStore.setItemAsync(PRO_STATE_KEY, JSON.stringify(state));
 }
 
+function derivePlanType(productId: string | undefined, hasExpiration: boolean): PlanKind | null {
+  if (!productId) return null;
+  if (!hasExpiration) return 'lifetime';
+  const id = productId.toLowerCase();
+  if (id.includes('lifetime') || id.includes('lt')) return 'lifetime';
+  if (id.includes('annual') || id.includes('yearly') || id.includes('year')) return 'yearly';
+  if (id.includes('monthly') || id.includes('month')) return 'monthly';
+  return null;
+}
+
 function toProState(info: CustomerInfo): ProState {
   const entitlement = info.entitlements.active[ENTITLEMENT_ID];
   const isPro = Boolean(entitlement);
-
-  // Detect plan type from product identifier
-  // Conventions: *.monthly / *.yearly (or .annual) / *.lifetime
-  let planType: 'monthly' | 'yearly' | 'lifetime' | null = null;
-  if (entitlement) {
-    const productId = entitlement.productIdentifier?.toLowerCase() ?? '';
-    if (productId.includes('lifetime')) planType = 'lifetime';
-    else if (productId.includes('annual') || productId.includes('yearly')) planType = 'yearly';
-    else if (productId.includes('monthly')) planType = 'monthly';
-  }
-
   return {
     isPro,
     anonUserId: info.originalAppUserId ?? null,
     lastCheckAt: new Date().toISOString(),
-    planType,
+    planType: isPro
+      ? derivePlanType(entitlement?.productIdentifier, entitlement?.expirationDate != null)
+      : null,
     expirationDate: entitlement?.expirationDate ?? null,
     managementURL: info.managementURL ?? null,
   };
@@ -126,8 +127,6 @@ function findPackage(offering: PurchasesOffering | null, plan: PlanType): Purcha
   if (!offering) return null;
   if (plan === 'monthly') return offering.monthly;
   if (plan === 'yearly') return offering.annual;
-  // lifetime: RevenueCat exposes lifetime products via offering.lifetime
-  // OR via availablePackages with packageType === 'LIFETIME'
   if (offering.lifetime) return offering.lifetime;
   return offering.availablePackages?.find((p) => p.packageType === 'LIFETIME') ?? null;
 }
@@ -175,7 +174,27 @@ async function getPriceStrings(): Promise<{
   };
 }
 
+/** Exported for unit testing only. */
+export {
+  toProState as _toProState,
+  findPackage as _findPackage,
+  derivePlanType as _derivePlanType,
+};
+
 export const proService = {
+  addCustomerInfoListener(onUpdate: (state: ProState) => void): (() => void) | null {
+    if (!isNative) return null;
+    const handler = async (info: CustomerInfo) => {
+      const state = toProState(info);
+      await saveState(state);
+      onUpdate(state);
+    };
+    Purchases.addCustomerInfoUpdateListener(handler);
+    return () => {
+      Purchases.removeCustomerInfoUpdateListener(handler);
+    };
+  },
+
   async getPriceDetails() {
     return getPriceDetails();
   },
