@@ -29,10 +29,13 @@
 
 ### ADR（なぜそうしたか）
 
-- `docs/adr/ADR-*.md`
-  - 意思決定の理由ログ（蒸し返し防止）
-- `docs/adr/adr_template.md`
-  - ADR を追加するときのテンプレート
+- `docs/adr/ADR-0001-initial-decisions.md` — 初期の技術選定・アーキテクチャ決定
+- `docs/adr/ADR-0002-revenue-model.md` — 収益モデルの選択（広告 + サブスク）
+- `docs/adr/ADR-0003-storage-policy.md` — データ保存方針（AsyncStorage vs SecureStore）
+- `docs/adr/ADR-0004-language-set.md` — ローカライズ範囲（19 言語、RTL 除外）
+- `docs/adr/ADR-0005-ios-encryption-compliance.md` — iOS 暗号化エクスポートコンプライアンス
+- `docs/adr/ADR-0006-in-app-review-trigger.md` — アプリ内レビュー促進のタイミング設計
+- `docs/adr/adr_template.md` — ADR を追加するときのテンプレート
 
 ### How-to（手順 — サブディレクトリ別）
 
@@ -48,6 +51,8 @@
 - `docs/how-to/development/ios_build.md` — iOS の Debug / Release ビルド手順
 - `docs/how-to/development/debug_guide.md` — デバッグの進め方ガイド
 - `docs/how-to/development/sentry_setup.md` — Sentry（エラー監視）のセットアップ手順
+- `docs/how-to/development/admob_advertising_setup.md` — AdMob 広告のセットアップ手順
+- `docs/how-to/development/dev_vs_preview_builds.md` — Dev Build vs Preview Build の使い分け
 
 **workflow/**（フロー / リリース運用）
 
@@ -55,6 +60,9 @@
 - `docs/how-to/workflow/git_workflow.md` — Issue→Branch→Commit→PR→Merge の Git 運用手順
 - `docs/how-to/workflow/store_listing_guide.md` — ストア掲載情報の管理ガイド
 - `docs/how-to/workflow/screenshot_generation.md` — ストア掲載用スクリーンショットの生成手順
+- `docs/how-to/workflow/google_play_release.md` — Google Play ストアリリース手順
+- `docs/how-to/workflow/ios_testflight_release.md` — iOS TestFlight リリース手順
+- `docs/how-to/workflow/release_notes_template.md` — リリースノートテンプレート
 
 **testing/**（テスト関連）
 
