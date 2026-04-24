@@ -1,0 +1,65 @@
+# EAS Build ignore — .gitignore ベースだが .env は除外しない
+#
+# なぜ .env を含めるのか:
+#   EAS ローカルビルドはプロジェクトをアーカイブして /tmp にコピーする。
+#   .gitignore をそのまま使うと .env が除外され、app.config.ts が
+#   APP_NAME 等の必須環境変数を読めずビルドが失敗する。
+#
+# クラウドビルドへの影響:
+#   EAS クラウドビルドでは eas env:list が正規のシークレットソース。
+#   .env の値はローカルビルド専用であり、クラウドでは上書きされる。
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+# .env           ← 意図的に除外しない（ローカルビルドに必要）
+.env*.local
+
+# secrets (EAS Submit service account keys, etc.)
+secrets/
+
+# typescript
+*.tsbuildinfo
+
+app-example
+
+# generated native folders
+/ios
+/android
+
+# Tamagui generated
+.tamagui/
+
+# Debug sessions
+.debug-sessions/
+
+# Store screenshots output
+screenshots/
