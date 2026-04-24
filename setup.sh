@@ -20,7 +20,7 @@ read -rp "Android パッケージ名（例: com.yourcompany.myapp）: " ANDROID_
 read -rp "iOS バンドルID（例: com.yourcompany.myapp）: " IOS_BUNDLE_IDENTIFIER
 read -rp "ディープリンクスキーム（例: myapp）: " APP_SCHEME
 read -rp "アプリの一行説明: " DESCRIPTION
-read -rp "EAS プロジェクトID（不明な場合は空欄でOK）: " EAS_PROJECT_ID
+read -rp "EAS プロジェクトID（空欄で自動作成、既存IDも入力可）: " EAS_PROJECT_ID
 echo ""
 echo "Expo 標準のチュートリアル画面（HelloWave / Step 1, 2, 3 / explore タブ等）を削除しますか？"
 echo "  Y = 削除する（推奨：自分のアプリを作り始めるなら）"
@@ -36,7 +36,7 @@ echo "  ANDROID_PACKAGE:        $ANDROID_PACKAGE"
 echo "  IOS_BUNDLE_IDENTIFIER:  $IOS_BUNDLE_IDENTIFIER"
 echo "  APP_SCHEME:             $APP_SCHEME"
 echo "  DESCRIPTION:            $DESCRIPTION"
-echo "  EAS_PROJECT_ID:         ${EAS_PROJECT_ID:-"（スキップ）"}"
+echo "  EAS_PROJECT_ID:         ${EAS_PROJECT_ID:-"（自動作成）"}"
 echo ""
 read -rp "この内容で進めますか？ (y/N): " CONFIRM
 if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
@@ -172,9 +172,15 @@ EOF
   # 上記の {{APP_NAME}} を実際のアプリ名で置換
   sed -i "s/{{APP_NAME}}/$APP_NAME/g" "app/(tabs)/index.tsx"
 
-  # _layout.tsx の (tabs) 構成を簡略化（タブが1つだけになるので）
-  echo "  サンプルコードを削除しました"
-  echo "  ⚠ Tabs 構成を残しているので、不要なら app/(tabs)/_layout.tsx を編集してください"
+  # _layout.tsx から explore タブの参照を削除（ファイルを消したのに参照が残るとクラッシュする）
+  node -e "
+    const fs = require('fs');
+    const file = 'app/(tabs)/_layout.tsx';
+    let content = fs.readFileSync(file, 'utf8');
+    content = content.replace(/\s*<Tabs\.Screen\s+name=\"explore\"[\s\S]*?\/>/g, '');
+    fs.writeFileSync(file, content);
+  "
+  echo "  サンプルコードを削除しました（_layout.tsx の explore 参照も除去済み）"
 fi
 
 # --- Claude Code subagents を user-level にインストール ---
@@ -210,6 +216,55 @@ fi
 echo ""
 echo "=== 依存関係をインストール中 ==="
 pnpm install
+
+# --- EAS プロジェクトの初期化 ---
+echo ""
+echo "=== EAS プロジェクトを初期化中 ==="
+
+# EAS CLI の検出
+EAS_CMD=""
+if command -v eas &>/dev/null; then
+  EAS_CMD="eas"
+elif command -v npx &>/dev/null; then
+  EAS_CMD="npx --yes eas-cli"
+fi
+
+if [[ -z "$EAS_PROJECT_ID" && -n "$EAS_CMD" ]]; then
+  # ログイン状態を確認
+  EAS_OWNER=$($EAS_CMD whoami 2>/dev/null) || EAS_OWNER=""
+
+  if [[ -n "$EAS_OWNER" ]]; then
+    echo "  EAS アカウント: $EAS_OWNER"
+    echo "  プロジェクトを作成中..."
+
+    # eas init: dynamic config (app.config.ts) のため exit code 1 になるが
+    # プロジェクト自体は作成される。|| true で続行する。
+    EAS_OUTPUT=$($EAS_CMD init --non-interactive --force 2>&1) || true
+
+    # 出力から UUID (EAS プロジェクトID) を抽出
+    EAS_PROJECT_ID=$(echo "$EAS_OUTPUT" | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' | head -1)
+
+    if [[ -n "$EAS_PROJECT_ID" ]]; then
+      sed -i "s/^EAS_PROJECT_ID=.*/EAS_PROJECT_ID=$EAS_PROJECT_ID/" .env
+      sed -i "s/^EAS_OWNER=.*/EAS_OWNER=$EAS_OWNER/" .env
+      echo "  ✓ EAS プロジェクト作成完了"
+      echo "    ID: $EAS_PROJECT_ID"
+      echo "    Owner: $EAS_OWNER"
+    else
+      echo "  ⚠ EAS プロジェクトID の自動取得に失敗しました"
+      echo "    手動で設定: eas init → .env の EAS_PROJECT_ID に値を入力"
+    fi
+  else
+    echo "  ⚠ EAS にログインしていません"
+    echo "    eas login → eas init で後から設定できます"
+  fi
+elif [[ -n "$EAS_PROJECT_ID" ]]; then
+  sed -i "s/^EAS_PROJECT_ID=.*/EAS_PROJECT_ID=$EAS_PROJECT_ID/" .env
+  echo "  EAS プロジェクトID（手動入力済み）: $EAS_PROJECT_ID"
+else
+  echo "  ⚠ EAS CLI が見つかりません（スキップ）"
+  echo "    npm install -g eas-cli → eas login → eas init で後から設定可能です"
+fi
 
 # --- 検証 ---
 echo ""

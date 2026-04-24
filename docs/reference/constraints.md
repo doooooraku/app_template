@@ -58,7 +58,9 @@
 
 ### 1-2. データ保存の原則（端末内のみ）
 
-- Habit / HabitLog：SQLite に保存する
+<!-- TODO: Fill in your app's data model -->
+
+- ドメインデータ：SQLite に保存する
 - Settings / ProState：SecureStore（端末の暗号化ストレージ）に保存する
 - v1.x は「アプリ内の全データ削除」ボタンを持たない（原則アンインストールで全削除）
 
